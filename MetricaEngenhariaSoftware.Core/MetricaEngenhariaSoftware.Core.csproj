@@ -48,6 +48,9 @@
     <Compile Include="Entidade\TabelaDominioContainer.cs" />
     <Compile Include="Entidade\TabelaConsulta.cs" />
     <Compile Include="Entidade\TabelaSaida.cs" />
+    <Compile Include="MetricasArquivo.cs" />
+    <Compile Include="MetricasInterface.cs" />
+    <Compile Include="MetricasConsulta.cs" />
     <Compile Include="MetricasSaida.cs" />
     <Compile Include="MetricasEntrada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

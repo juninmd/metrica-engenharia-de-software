@@ -2,20 +2,20 @@
 
 namespace MetricaEngenhariaSoftware.Core.Entidade
 {
-    public class ListaTabelaInteface
+    public class ListaTabelaInterface
     {
-        public List<TabelaInteface> TabelaInteface { get; set; }
+        public List<TabelaInterface> TabelaInterface { get; set; }
     }
 
-    public class TabelaInteface
+    public class TabelaInterface
     {
         public int NumeroOcorrencia { get; set; }
-        public TabelaIntefacePeso Complexidade { get; set; }
+        public TabelaInterfacePeso Complexidade { get; set; }
         public int Peso => (int)Complexidade;
         public int Resultado => NumeroOcorrencia * Peso;
     }
 
-    public enum TabelaIntefacePeso
+    public enum TabelaInterfacePeso
     {
         Simples = 5,
         Medio = 7,
