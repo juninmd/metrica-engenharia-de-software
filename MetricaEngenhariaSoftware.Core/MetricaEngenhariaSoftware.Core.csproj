@@ -41,10 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidade\Contador.cs" />
+    <Compile Include="Entidade\TabelaInterface.cs" />
+    <Compile Include="Entidade\TabelaArquivo.cs" />
     <Compile Include="Entidade\TabelaEntrada.cs" />
     <Compile Include="Entidade\TabelaDominio.cs" />
     <Compile Include="Entidade\TabelaDominioContainer.cs" />
+    <Compile Include="Entidade\TabelaConsulta.cs" />
     <Compile Include="Entidade\TabelaSaida.cs" />
+    <Compile Include="MetricasSaida.cs" />
     <Compile Include="MetricasEntrada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
