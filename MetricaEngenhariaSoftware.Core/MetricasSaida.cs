@@ -6,22 +6,22 @@ namespace MetricaEngenhariaSoftware.Core
 {
     public class MetricasSaida
     {
-        //TODO Calcular Geral
+        //TODO : Calcular Geral
         public List<TabelaSaida> CalcularSaida(TabelaDominioContainer tabelaDominioContainer)
         {
             var contador = new Contador();
 
             /* 1 a 5 - Atributos */
-            var umAquatro = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 1 && x.QuantidadeAtributos <= 5).Select(x => x.QuantidadeAtributos).Count();
-            ColunaA(umAquatro, contador);
+            var a = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 1 && x.QuantidadeAtributos <= 5).Select(x => x.QuantidadeAtributos).Count();
+            ColunaA(a, contador);
 
             /* 6 a 19 - Atributos */
-            var cincoAquinze = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 6 && x.QuantidadeAtributos <= 19).Select(x => x.QuantidadeAtributos).Count();
-            ColunaB(cincoAquinze, contador);
+            var b = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 6 && x.QuantidadeAtributos <= 19).Select(x => x.QuantidadeAtributos).Count();
+            ColunaB(b, contador);
 
             /* 20 ou mais - Atributos */
-            var dezesseisOuMais = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 20).Select(x => x.QuantidadeAtributos).Count();
-            ColunaC(dezesseisOuMais, contador);
+            var c = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 20).Select(x => x.QuantidadeAtributos).Count();
+            ColunaC(c, contador);
 
             return new List<TabelaSaida>
             {

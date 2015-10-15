@@ -4,39 +4,39 @@ using MetricaEngenhariaSoftware.Core.Entidade;
 
 namespace MetricaEngenhariaSoftware.Core
 {
-    public class MetricasEntrada
+    public class MetricasArquivo
     {
-        public List<TabelaEntrada> CalcularEntrada(TabelaDominioContainer tabelaDominioContainer)
+        public List<TabelaArquivo> CalcularArquivo(TabelaDominioContainer tabelaDominioContainer)
         {
             var contador = new Contador();
 
-            /* 1 a 4 - Atributos */
-            var a = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 1 && x.QuantidadeAtributos <= 4).Select(x => x.QuantidadeAtributos).Count();
+            /* 1 a 19 - Atributos */
+            var a = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 1 && x.QuantidadeAtributos <= 19).Select(x => x.QuantidadeAtributos).Count();
             ColunaA(a, contador);
 
-            /* 5 a 15 - Atributos */
-            var b = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 5 && x.QuantidadeAtributos <= 15).Select(x => x.QuantidadeAtributos).Count();
+            /* 20 a 50 - Atributos */
+            var b = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 20 && x.QuantidadeAtributos <= 50).Select(x => x.QuantidadeAtributos).Count();
             ColunaB(b, contador);
 
-            /* 16 ou mais - Atributos */
-            var c = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 16).Select(x => x.QuantidadeAtributos).Count();
+            /* 51 ou mais - Atributos */
+            var c = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 51).Select(x => x.QuantidadeAtributos).Count();
             ColunaC(c, contador);
 
-            return new List<TabelaEntrada>
+            return new List<TabelaArquivo>
             {
-                new TabelaEntrada
+                new TabelaArquivo
                 {
-                    Complexidade = TabelaEntradaPeso.Simples,
+                    Complexidade = TabelaArquivoPeso.Simples,
                     NumeroOcorrencia = contador.simples
                 },
-                 new TabelaEntrada
+                 new TabelaArquivo
                 {
-                    Complexidade = TabelaEntradaPeso.Medio,
+                    Complexidade = TabelaArquivoPeso.Medio,
                     NumeroOcorrencia = contador.medio
                 },
-                  new TabelaEntrada
+                  new TabelaArquivo
                 {
-                    Complexidade = TabelaEntradaPeso.Complexo,
+                    Complexidade = TabelaArquivoPeso.Complexo,
                     NumeroOcorrencia = contador.complexo
                 }
             };
@@ -45,7 +45,7 @@ namespace MetricaEngenhariaSoftware.Core
 
         private void ColunaA(int count, Contador contador)
         {
-            if (count >= 3)
+            if (count >= 6)
             {
                 contador.medio += count;
             }
@@ -60,11 +60,11 @@ namespace MetricaEngenhariaSoftware.Core
             {
                 contador.simples += count;
             }
-            if (count == 2)
+            if (count >= 2 && count <= 5)
             {
                 contador.medio += count;
             }
-            if (count >= 3)
+            if (count >= 6)
             {
                 contador.complexo += count;
             }

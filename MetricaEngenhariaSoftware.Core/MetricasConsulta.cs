@@ -4,9 +4,10 @@ using MetricaEngenhariaSoftware.Core.Entidade;
 
 namespace MetricaEngenhariaSoftware.Core
 {
-    public class MetricasEntrada
+    public class MetricasConsulta
     {
-        public List<TabelaEntrada> CalcularEntrada(TabelaDominioContainer tabelaDominioContainer)
+        // TODO : Calcular Geral
+        public List<TabelaConsulta> CalcularConsulta(TabelaDominioContainer tabelaDominioContainer)
         {
             var contador = new Contador();
 
@@ -22,21 +23,21 @@ namespace MetricaEngenhariaSoftware.Core
             var c = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 16).Select(x => x.QuantidadeAtributos).Count();
             ColunaC(c, contador);
 
-            return new List<TabelaEntrada>
+            return new List<TabelaConsulta>
             {
-                new TabelaEntrada
+                new TabelaConsulta
                 {
-                    Complexidade = TabelaEntradaPeso.Simples,
+                    Complexidade = TabelaConsultaPeso.Simples,
                     NumeroOcorrencia = contador.simples
                 },
-                 new TabelaEntrada
+                 new TabelaConsulta
                 {
-                    Complexidade = TabelaEntradaPeso.Medio,
+                    Complexidade = TabelaConsultaPeso.Medio,
                     NumeroOcorrencia = contador.medio
                 },
-                  new TabelaEntrada
+                  new TabelaConsulta
                 {
-                    Complexidade = TabelaEntradaPeso.Complexo,
+                    Complexidade = TabelaConsultaPeso.Complexo,
                     NumeroOcorrencia = contador.complexo
                 }
             };
