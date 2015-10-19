@@ -9,6 +9,8 @@ namespace MetricaEngenhariaSoftware.Core
         // TODO : Calcular Geral
         public List<TabelaInterface> CalcularInterface(TabelaDominioContainer tabelaDominioContainer)
         {
+            //tabelaDominioContainer.TabelaDominio = tabelaDominioContainer.TabelaDominio.Where(x => x.NomeTabela != "Geral").ToList();
+
             var contador = new Contador();
 
             /* 1 a 19 - Atributos */
@@ -22,7 +24,6 @@ namespace MetricaEngenhariaSoftware.Core
             /* 51 ou mais - Atributos */
             var c = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 51).Select(x => x.QuantidadeAtributos).Count();
             ColunaC(c, contador);
-
 
             return new List<TabelaInterface>
             {
@@ -83,5 +84,6 @@ namespace MetricaEngenhariaSoftware.Core
                 contador.complexo += count;
             }
         }
+ 
     }
 }
