@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using MetricaEngenhariaSoftware.Core.Entidade;
 
@@ -6,9 +7,10 @@ namespace MetricaEngenhariaSoftware.Core
 {
     public class MetricasSaida
     {
-        //TODO : Calcular Geral
         public List<TabelaSaida> CalcularSaida(TabelaDominioContainer tabelaDominioContainer)
         {
+            //tabelaDominioContainer.TabelaDominio = tabelaDominioContainer.TabelaDominio.Where(x => x.NomeTabela != "Geral").ToList();
+
             var contador = new Contador();
 
             /* 1 a 5 - Atributos */
@@ -46,13 +48,14 @@ namespace MetricaEngenhariaSoftware.Core
 
         private void ColunaA(int count, Contador contador)
         {
+            if (count >= 0 && count <= 3)
+            {
+                contador.simples += count;
+            }
             if (count >= 4)
             {
                 contador.medio += count;
-            }
-            else
-            {
-                contador.simples += count;
+
             }
         }
         private void ColunaB(int count, Contador contador)
@@ -61,7 +64,7 @@ namespace MetricaEngenhariaSoftware.Core
             {
                 contador.simples += count;
             }
-            if (count == 2 || count == 3)
+            if (count >= 2 && count <= 3)
             {
                 contador.medio += count;
             }
@@ -73,14 +76,15 @@ namespace MetricaEngenhariaSoftware.Core
 
         private void ColunaC(int count, Contador contador)
         {
-            if (count == 1)
+            if (count >= 0 && count <= 1)
             {
-                contador.simples += count;
+                contador.medio += count;
             }
             if (count >= 2)
             {
                 contador.complexo += count;
             }
         }
+
     }
 }

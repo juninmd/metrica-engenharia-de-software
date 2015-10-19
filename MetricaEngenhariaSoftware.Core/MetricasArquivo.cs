@@ -8,6 +8,8 @@ namespace MetricaEngenhariaSoftware.Core
     {
         public List<TabelaArquivo> CalcularArquivo(TabelaDominioContainer tabelaDominioContainer)
         {
+            //tabelaDominioContainer.TabelaDominio = tabelaDominioContainer.TabelaDominio.Where(x => x.NomeTabela != "Geral").ToList();
+
             var contador = new Contador();
 
             /* 1 a 19 - Atributos */
@@ -45,14 +47,15 @@ namespace MetricaEngenhariaSoftware.Core
 
         private void ColunaA(int count, Contador contador)
         {
+            if (count >= 0 && count <= 5)
+            {
+                contador.simples += count;
+            }
             if (count >= 6)
             {
                 contador.medio += count;
             }
-            else
-            {
-                contador.simples += count;
-            }
+
         }
         private void ColunaB(int count, Contador contador)
         {
@@ -74,7 +77,7 @@ namespace MetricaEngenhariaSoftware.Core
         {
             if (count == 1)
             {
-                contador.simples += count;
+                contador.medio += count;
             }
             if (count >= 2)
             {

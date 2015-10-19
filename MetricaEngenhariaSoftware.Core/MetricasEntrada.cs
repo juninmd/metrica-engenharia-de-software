@@ -8,6 +8,8 @@ namespace MetricaEngenhariaSoftware.Core
     {
         public List<TabelaEntrada> CalcularEntrada(TabelaDominioContainer tabelaDominioContainer)
         {
+            tabelaDominioContainer.TabelaDominio = tabelaDominioContainer.TabelaDominio.Where(x => x.NomeTabela != "Geral").ToList();
+
             var contador = new Contador();
 
             /* 1 a 4 - Atributos */
