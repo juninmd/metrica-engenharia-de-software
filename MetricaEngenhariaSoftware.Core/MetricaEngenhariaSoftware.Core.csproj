@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Debugar.cs" />
     <Compile Include="Entidade\Contador.cs" />
     <Compile Include="Entidade\TabelaInterface.cs" />
     <Compile Include="Entidade\TabelaArquivo.cs" />
