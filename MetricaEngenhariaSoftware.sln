@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricaEngenhariaSoftware.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricaEngenhariaSoftware.Test", "MetricaEngenhariaSoftware.Test\MetricaEngenhariaSoftware.Test.csproj", "{1593565B-3B26-4A7F-88DB-120F83FD2184}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentos", "Documentos", "{00719282-32C4-4C4A-8A5D-D0ED8276731F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\OneDrive\Fatec\2º Semestre\Carlão\Material\apostilas1provaeng_software\009_Engenharia de Software_Metricas_2.pdf = ..\..\..\..\OneDrive\Fatec\2º Semestre\Carlão\Material\apostilas1provaeng_software\009_Engenharia de Software_Metricas_2.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
