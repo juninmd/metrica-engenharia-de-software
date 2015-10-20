@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using MetricaEngenhariaSoftware.Core;
+using MetricaEngenhariaSoftware.Core.CalcularMetricas;
+using MetricaEngenhariaSoftware.Core.Constants;
 using MetricaEngenhariaSoftware.Core.Entidade;
+using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
+using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TiposTabela;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MetricaEngenhariaSoftware.Test
@@ -16,6 +20,7 @@ namespace MetricaEngenhariaSoftware.Test
         public MetricasInterface MetricasInterface => new MetricasInterface();
         public MetricasConsulta MetricasConsulta => new MetricasConsulta();
         public MetricasSaida MetricasSaida => new MetricasSaida();
+        public MetricasBase MetricasBase => new MetricasBase();
 
         private TabelaDominioContainer TabelaDefault()
         {
@@ -78,57 +83,8 @@ namespace MetricaEngenhariaSoftware.Test
             });
             return TabelaDominioContainer;
         }
+ 
 
-        private TabelaDominioContainer ProjetoA()
-        {
-            var TabelaDominioContainer = new TabelaDominioContainer
-            {
-                TabelaDominio = new List<TabelaDominio>
-                {
-
-                    new TabelaDominio
-                     {
-                         NomeTabela = "A",
-                         QuantidadeAtributos = 15,
-                     }, new TabelaDominio
-                     {
-                         NomeTabela = "B",
-                         QuantidadeAtributos = 18,
-                     }, new TabelaDominio
-                     {
-                         NomeTabela = "C",
-                         QuantidadeAtributos = 21,
-                     }, new TabelaDominio
-                     {
-                         NomeTabela = "D",
-                         QuantidadeAtributos = 4,
-                     }, new TabelaDominio
-                     {
-                         NomeTabela = "E",
-                         QuantidadeAtributos = 3,
-                     }, new TabelaDominio
-                     {
-                         NomeTabela = "F",
-                         QuantidadeAtributos = 9,
-                     }
-                }
-            };
-            var geral = TabelaDominioContainer.TabelaDominio.Select(x => x.QuantidadeAtributos).Sum();
-
-
-            foreach (var item in TabelaDominioContainer.TabelaDominio)
-            {
-                Debug.WriteLine(item.NomeTabela);
-                Debug.WriteLine(item.QuantidadeAtributos);
-            }
-
-            TabelaDominioContainer.TabelaDominio.Add(new TabelaDominio
-            {
-                NomeTabela = "Geral",
-                QuantidadeAtributos = geral
-            });
-            return TabelaDominioContainer;
-        }
         [TestMethod]
         public void CalcularTiposTabela()
         {
@@ -148,7 +104,26 @@ namespace MetricaEngenhariaSoftware.Test
 
             var calcularInterface = MetricasInterface.CalcularInterface(TabelaDominioContainer);
             ValidarInterface(calcularInterface);
+
+            var TabelasBrutas = new TabelasBrutas
+            {
+                TabelaEntrada = calcularEntrada,
+                TabelaSaida = calcularSaida,
+                TabelaConsulta = calcularConsulta,
+                TabelaArquivo = calcularArquivo,
+                TabelaInterface = calcularInterface
+            };
+
+            var totalFPB = TabelasBrutas.PBA;
+            ValidarFPB(totalFPB);
+
+
+            var valorBase = MetricasBase.CalcularBase(totalFPB);
+            validarBase(totalFPB);
+
         }
+
+
 
         private void ValidarEntrada(List<TabelaEntrada> lista)
         {
@@ -238,6 +213,15 @@ namespace MetricaEngenhariaSoftware.Test
             Assert.AreEqual(lista[2].Complexidade, TabelaInterfacePeso.Complexo);
             Assert.AreEqual(lista[2].Peso, 10);
             Assert.AreEqual(lista[2].Resultado, 0);
+        }
+
+        private void ValidarFPB(int fpb)
+        {
+            Assert.AreEqual(fpb, 304);
+        }
+        private void validarBase(double intBase)
+        {
+            Assert.AreEqual(intBase, 359);
         }
 
     }

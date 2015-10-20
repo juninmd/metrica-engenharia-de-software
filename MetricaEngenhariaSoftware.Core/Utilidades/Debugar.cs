@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using MetricaEngenhariaSoftware.Core.Entidade;
+using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
 
-namespace MetricaEngenhariaSoftware.Core
+namespace MetricaEngenhariaSoftware.Core.Utilidades
 {
     public static class Debugar
     {
