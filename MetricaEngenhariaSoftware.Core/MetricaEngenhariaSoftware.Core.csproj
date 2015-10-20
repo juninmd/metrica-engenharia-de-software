@@ -40,20 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Debugar.cs" />
-    <Compile Include="Entidade\Contador.cs" />
-    <Compile Include="Entidade\TabelaInterface.cs" />
-    <Compile Include="Entidade\TabelaArquivo.cs" />
-    <Compile Include="Entidade\TabelaEntrada.cs" />
-    <Compile Include="Entidade\TabelaDominio.cs" />
-    <Compile Include="Entidade\TabelaDominioContainer.cs" />
-    <Compile Include="Entidade\TabelaConsulta.cs" />
-    <Compile Include="Entidade\TabelaSaida.cs" />
-    <Compile Include="MetricasArquivo.cs" />
-    <Compile Include="MetricasInterface.cs" />
-    <Compile Include="MetricasConsulta.cs" />
-    <Compile Include="MetricasSaida.cs" />
-    <Compile Include="MetricasEntrada.cs" />
+    <Compile Include="CalcularMetricas\MetricasBase.cs" />
+    <Compile Include="Constants\Constant.cs" />
+    <Compile Include="Utilidades\Debugar.cs" />
+    <Compile Include="Entidade\Tabela Base\Contador.cs" />
+    <Compile Include="Entidade\TabelasBrutas.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaInterface.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaArquivo.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaEntrada.cs" />
+    <Compile Include="Entidade\Tabela Base\TabelaDominio.cs" />
+    <Compile Include="Entidade\Tabela Base\TabelaDominioContainer.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaConsulta.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaSaida.cs" />
+    <Compile Include="CalcularMetricas\MetricasArquivo.cs" />
+    <Compile Include="CalcularMetricas\MetricasInterface.cs" />
+    <Compile Include="CalcularMetricas\MetricasConsulta.cs" />
+    <Compile Include="CalcularMetricas\MetricasSaida.cs" />
+    <Compile Include="CalcularMetricas\MetricasEntrada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
