@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using MetricaEngenhariaSoftware.Core.Entidade;
 
@@ -6,24 +7,22 @@ namespace MetricaEngenhariaSoftware.Core
 {
     public class MetricasInterface
     {
-        // TODO : Calcular Geral
         public List<TabelaInterface> CalcularInterface(TabelaDominioContainer tabelaDominioContainer)
         {
-            //tabelaDominioContainer.TabelaDominio = tabelaDominioContainer.TabelaDominio.Where(x => x.NomeTabela != "Geral").ToList();
+            Debug.WriteLine("######## INTERFACE ########");
 
             var contador = new Contador();
 
             /* 1 a 19 - Atributos */
-            var a = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 1 && x.QuantidadeAtributos <= 19).Select(x => x.QuantidadeAtributos).Count();
-            ColunaA(a, contador);
+            ColunaA(tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 1 && x.QuantidadeAtributos <= 19).ToList(), contador);
 
             /* 20 a 50 - Atributos */
-            var b = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 20 && x.QuantidadeAtributos <= 50).Select(x => x.QuantidadeAtributos).Count();
-            ColunaB(b, contador);
+            ColunaB(tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 20 && x.QuantidadeAtributos <= 50).ToList(), contador);
 
             /* 51 ou mais - Atributos */
-            var c = tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 51).Select(x => x.QuantidadeAtributos).Count();
-            ColunaC(c, contador);
+            ColunaC(tabelaDominioContainer.TabelaDominio.Where(x => x.QuantidadeAtributos >= 51).ToList(), contador);
+
+            Debug.WriteLine("######## FIM INTERFACE ########");
 
             return new List<TabelaInterface>
             {
@@ -46,44 +45,31 @@ namespace MetricaEngenhariaSoftware.Core
 
         }
 
-        private void ColunaA(int count, Contador contador)
+
+        private void ColunaA(List<TabelaDominio> itens, Contador contador)
         {
-            if (count >= 6)
-            {
-                contador.medio += count;
-            }
-            else
-            {
-                contador.simples += count;
-            }
-        }
-        private void ColunaB(int count, Contador contador)
-        {
-            if (count == 1)
-            {
-                contador.simples += count;
-            }
-            if (count >= 2 && count <= 5)
-            {
-                contador.medio += count;
-            }
-            if (count >= 6)
-            {
-                contador.complexo += count;
-            }
+            itens.Caguetar();
+            var count = itens.Select(x => x.QuantidadeAtributos).Count();
+            contador.Simples(count, 1, 5);
+            contador.Medio(count, 6, 99999);
         }
 
-        private void ColunaC(int count, Contador contador)
+        private void ColunaB(List<TabelaDominio> itens, Contador contador)
         {
-            if (count == 1)
-            {
-                contador.simples += count;
-            }
-            if (count >= 2)
-            {
-                contador.complexo += count;
-            }
+            itens.Caguetar();
+            var count = itens.Select(x => x.QuantidadeAtributos).Count();
+            contador.Simples(count, 1, 1);
+            contador.Medio(count, 2, 5);
+            contador.Complexo(count, 6, 99999);
         }
- 
+
+        private void ColunaC(List<TabelaDominio> itens, Contador contador)
+        {
+            itens.Caguetar();
+            var count = itens.Select(x => x.QuantidadeAtributos).Count();
+            contador.Medio(count, 1, 1);
+            contador.Complexo(count, 2, 99999);
+        }
+
     }
 }

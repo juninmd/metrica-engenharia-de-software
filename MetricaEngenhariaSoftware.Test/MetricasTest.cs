@@ -17,8 +17,7 @@ namespace MetricaEngenhariaSoftware.Test
         public MetricasConsulta MetricasConsulta => new MetricasConsulta();
         public MetricasSaida MetricasSaida => new MetricasSaida();
 
-        [TestMethod]
-        public void CalcularEntrada()
+        private TabelaDominioContainer TabelaDefault()
         {
             var TabelaDominioContainer = new TabelaDominioContainer
             {
@@ -70,7 +69,51 @@ namespace MetricaEngenhariaSoftware.Test
                      },
                 }
             };
-            var geral = TabelaDominioContainer.TabelaDominio.Select(x => x.QuantidadeAtributos).Count();
+            var geral = TabelaDominioContainer.TabelaDominio.Select(x => x.QuantidadeAtributos).Sum();
+
+            TabelaDominioContainer.TabelaDominio.Add(new TabelaDominio
+            {
+                NomeTabela = "Geral",
+                QuantidadeAtributos = geral
+            });
+            return TabelaDominioContainer;
+        }
+
+        private TabelaDominioContainer ProjetoA()
+        {
+            var TabelaDominioContainer = new TabelaDominioContainer
+            {
+                TabelaDominio = new List<TabelaDominio>
+                {
+
+                    new TabelaDominio
+                     {
+                         NomeTabela = "A",
+                         QuantidadeAtributos = 15,
+                     }, new TabelaDominio
+                     {
+                         NomeTabela = "B",
+                         QuantidadeAtributos = 18,
+                     }, new TabelaDominio
+                     {
+                         NomeTabela = "C",
+                         QuantidadeAtributos = 21,
+                     }, new TabelaDominio
+                     {
+                         NomeTabela = "D",
+                         QuantidadeAtributos = 4,
+                     }, new TabelaDominio
+                     {
+                         NomeTabela = "E",
+                         QuantidadeAtributos = 3,
+                     }, new TabelaDominio
+                     {
+                         NomeTabela = "F",
+                         QuantidadeAtributos = 9,
+                     }
+                }
+            };
+            var geral = TabelaDominioContainer.TabelaDominio.Select(x => x.QuantidadeAtributos).Sum();
 
 
             foreach (var item in TabelaDominioContainer.TabelaDominio)
@@ -84,6 +127,12 @@ namespace MetricaEngenhariaSoftware.Test
                 NomeTabela = "Geral",
                 QuantidadeAtributos = geral
             });
+            return TabelaDominioContainer;
+        }
+        [TestMethod]
+        public void CalcularTiposTabela()
+        {
+            var TabelaDominioContainer = TabelaDefault();
 
             var calcularEntrada = MetricasEntrada.CalcularEntrada(TabelaDominioContainer);
             ValidarEntrada(calcularEntrada);
