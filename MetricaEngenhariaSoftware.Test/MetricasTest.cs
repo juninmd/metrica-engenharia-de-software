@@ -122,8 +122,11 @@ namespace MetricaEngenhariaSoftware.Test
 
             var valorLinguagem = valorBase * Linguagens.Java;
 
-            var sistema = valorLinguagem / Sistema.Web;
+            var valorMes = Math.Round(valorLinguagem / Sistema.Web);
 
+            var valorIso = valorMes*Iso.ISO9126;
+
+            var custoProjeto = valorIso*90;
         }
 
 
