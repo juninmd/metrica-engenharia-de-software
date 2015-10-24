@@ -83,7 +83,7 @@ namespace MetricaEngenhariaSoftware.Test
             });
             return TabelaDominioContainer;
         }
- 
+
 
         [TestMethod]
         public void CalcularTiposTabela()
@@ -118,8 +118,11 @@ namespace MetricaEngenhariaSoftware.Test
             ValidarFPB(totalFPB);
 
 
-            var valorBase = MetricasBase.CalcularBase(totalFPB);
-            validarBase(totalFPB);
+            var valorBase = Math.Round(MetricasBase.CalcularBase(totalFPB));
+
+            var valorLinguagem = valorBase * Linguagens.Java;
+
+            var sistema = valorLinguagem / Sistema.Web;
 
         }
 
