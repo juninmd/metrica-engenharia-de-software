@@ -4,9 +4,11 @@
     {
         // public static double FA => 1.35;
         public static double FA => 1.18;
+    }
 
-        //Linguagem
-
+    public static class Iso
+    {
+        public static int ISO9126 => 132;
     }
     public static class Sistema
     {
@@ -18,7 +20,5 @@
         public static double Java => 20.0;
         public static double VB => 20.0;
         public static double GC => 20.0;
-
-
     }
 }
