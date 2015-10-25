@@ -175,6 +175,12 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetricaEngenhariaSoftware.Core\MetricaEngenhariaSoftware.Core.csproj">
+      <Project>{9BFAE168-4B41-4C86-8E63-DB4C2C5CAE22}</Project>
+      <Name>MetricaEngenhariaSoftware.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
