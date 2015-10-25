@@ -3,30 +3,20 @@
 }
 
 
-
 <div class="row">
-    <div class="col-md-4">
-        <table>
-
-            <thead>
-                <tr>Nome da tabela</tr>
-                <tr>Quantidade de Atributos</tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>aaa</td>
-                    <td>aaa</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-md-4">
-
-        <span>Nome da Tabela</span>
-        <input class="" type="text" />
-        <span>Quantidade de Atributos</span>
-        <input id="txtAtributos" type="number" />
-    </div>
+    <form class="form-inline">
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Transfer cash</button>
+    </form>
+</div>
+<div class="row">
     <div class="btn-group">
         <button class="btn btn-default" id="btnAdicionar" type="button">Adicionar item Tabela</button>
     </div>
