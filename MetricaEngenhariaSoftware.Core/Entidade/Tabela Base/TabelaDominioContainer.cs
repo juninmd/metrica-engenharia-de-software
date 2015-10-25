@@ -12,11 +12,13 @@ namespace MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base
         ///  JAVA / VB / GC
         /// </summary>
         public int LinguagemDoSistema { get; set; }
+        public string NomeLinguagemDoSistema { get; set; }
 
         /// <summary>
         /// WEB / COMERCIAL 
         /// </summary>
         public int TipoDoSistema { get; set; }
+        public string NomeTipoDoSistema { get; set; }
 
         /* ------------------- ITENS DO SISTEMA -------------------*/
 

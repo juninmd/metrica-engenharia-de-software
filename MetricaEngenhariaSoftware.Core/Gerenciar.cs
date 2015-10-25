@@ -56,12 +56,15 @@ namespace MetricaEngenhariaSoftware.Core
             {
                 case 1:
                     tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.Java;
+                    tabelaDominioContainer.NomeLinguagemDoSistema = "JAVA";
                     break;
                 case 2:
                     tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.VB;
+                    tabelaDominioContainer.NomeLinguagemDoSistema = "VISUAL BASIC";
                     break;
                 case 3:
                     tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.GC;
+                    tabelaDominioContainer.NomeLinguagemDoSistema = "GERADOR DE CÓDIGO";
                     break;
             }
             /* Calcula por tipo de sistema 1web 2comercial*/
@@ -69,9 +72,12 @@ namespace MetricaEngenhariaSoftware.Core
             {
                 case 1:
                     tabelaDominioContainer.TempoTotal = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Web;
+                    tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA WEB";
+
                     break;
                 case 2:
                     tabelaDominioContainer.TempoTotal = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Comercial;
+                    tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA COMERCIAL";
                     break;
             }
 
