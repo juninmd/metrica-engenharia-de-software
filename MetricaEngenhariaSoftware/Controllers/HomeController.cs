@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using MetricaEngenhariaSoftware.Core;
 using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
 
 namespace MetricaEngenhariaSoftware.Controllers
@@ -21,8 +22,14 @@ namespace MetricaEngenhariaSoftware.Controllers
 
             var tabelaDominio = nomeSplit.Select((t, i) => new TabelaDominio
             {
-                NomeTabela = t, QuantidadeAtributos = int.Parse(atributosSplit[i]),
+                NomeTabela = t,
+                QuantidadeAtributos = int.Parse(atributosSplit[i]),
             }).ToList();
+
+            var TabelaDominioContainer = new Gerenciar().Inserir(tabelaDominio, int.Parse(form["LinguagemDoSistema"]), int.Parse(form["TipoDoSistema"]));
+
+            /* Armazena em Session */
+            HttpContext.Session["TabelaDominioContainer"] = TabelaDominioContainer;
 
             return View();
         }
@@ -36,7 +43,11 @@ namespace MetricaEngenhariaSoftware.Controllers
         [HttpGet]
         public ActionResult Resultados()
         {
-            return View();
+            if (HttpContext.Session["TabelaDominioContainer"] == null)
+                return View();
+
+            var tabelaDominio = (TabelaDominioContainer)HttpContext.Session["TabelaDominioContainer"];
+            return View(tabelaDominio);
         }
 
     }

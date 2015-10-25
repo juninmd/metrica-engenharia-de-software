@@ -158,10 +158,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\InserirTabelas.cshtml" />
     <Content Include="Views\Home\Parametros.cshtml" />
     <Content Include="Views\Home\Resultados.cshtml" />
+    <Content Include="Views\Home\_Resultados_Entrada.cshtml" />
+    <Content Include="Views\Home\_Resultados_Grid.cshtml" />
+    <Content Include="Views\Home\_Resultados_Arquivo.cshtml" />
+    <Content Include="Views\Home\_Resultados_Consulta.cshtml" />
+    <Content Include="Views\Home\_Resultados_Interface.cshtml" />
+    <Content Include="Views\Home\_Resultados_Saida.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
