@@ -114,17 +114,17 @@ namespace MetricaEngenhariaSoftware.Test
                 TabelaInterface = calcularInterface
             };
 
-            var totalFPB = TabelasBrutas.PBA;
+            var totalFPB = TabelasBrutas.FPB;
             ValidarFPB(totalFPB);
 
 
             var valorBase = Math.Round(MetricasBase.CalcularBase(totalFPB));
 
-            var valorLinguagem = valorBase * Linguagens.Java;
+            var PrecoDaLinguagem = valorBase * Linguagens.Java;
 
-            var valorMes = Math.Round(valorLinguagem / Sistema.Web);
+            var TempoTotal = Math.Round(PrecoDaLinguagem / Sistema.Web);
 
-            var valorIso = valorMes*Iso.ISO9126;
+            var valorIso = TempoTotal * Iso.ISO9126;
 
             var custoProjeto = valorIso*90;
         }

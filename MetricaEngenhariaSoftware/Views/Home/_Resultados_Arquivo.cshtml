@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "_Resultados_Grid.cshtml";
+}
+@foreach (var item in Model.TabelasBrutas.TabelaArquivo)
+{
+    <tr>
+        <td>@item.NumeroOcorrencia</td>
+        <td>@item.Complexidade</td>
+        <td>@item.Peso</td>
+        <td>@item.Resultado</td>
+    </tr>
+}
+ 

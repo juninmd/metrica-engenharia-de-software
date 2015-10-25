@@ -19,7 +19,6 @@
 <form method="POST">
     <div class="col-md-6 form-inline">
         <div class="form-inline">
-            <h4>Inserindo tabelas</h4>
             <div class="row">
                 <div class="form-group" style="padding-right: 240px">
                     <label>Nome</label>
@@ -32,10 +31,10 @@
             <div id="tableInputs">
                 <div class="row" style="padding-bottom: 3px">
                     <div style="display: inline-block;">
-                        <input type="text" class="form-control" name="NomeTabela" style="width: 280px" placeholder="ex : Usuário">
+                        <input type="text" required="" class="form-control" name="NomeTabela" style="width: 280px" placeholder="ex : Usuário">
                     </div>
                     <div style="display: inline-block; width: 80px">
-                        <input type="number" min="0" class="form-control" name="QuantidadeAtributos" placeholder="ex : 5">
+                        <input type="number" required="" min="0" class="form-control" name="QuantidadeAtributos" placeholder="ex : 5">
                     </div>
                 </div>
             </div>
@@ -48,12 +47,36 @@
             <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>
         </div>
     </div>
-</form>
-<div class="col-md-4 form-inline">
-    <label>Quantidade de Tabelas</label>
-    <label id="lblQtdTabelas">1</label>
-</div>
 
+    <div class="col-md-4 form-inline">
+
+
+        <div class="container">
+            <form role="form">
+                <div class="form-group">
+                    <label>Linguagem do Sistema:</label>
+                    <select required="" name="LinguagemDoSistema">
+                        <option value="1" selected="">Java</option>
+                        <option value="2">VB</option>
+                        <option value="3">GC</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo do Sistema:</label>
+                    <select required="" name="TipoDoSistema">
+                        <option value="1" selected="">Web</option>
+                        <option value="2">Comercial</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+
+        <hr />
+        <label>Quantidade de Tabelas</label>
+        <label id="lblQtdTabelas">1</label>
+    </div>
+</form>
 @section scripts
 {
     <script>

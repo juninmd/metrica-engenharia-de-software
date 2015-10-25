@@ -11,14 +11,11 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 
             var calcularBase = totalFPB * Constant.FA;
             Debug.WriteLine("######## FIM BASE ########");
-            return Arredondar(calcularBase);
+            return calcularBase;
 
         }
 
-        private double Arredondar(double doubleBase)
-        {
-            return doubleBase;
-        }
+        
 
     }
 }

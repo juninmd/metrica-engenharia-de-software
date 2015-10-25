@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TabelaDominioContainer
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,3 +15,69 @@
         </div>
     </div>
 </div>
+
+@if (Model == null)
+{
+    <p>Você não inseriu ainda os paramêtros</p>
+}
+else
+{
+    <h4>Tabela Arquivo</h4>
+    @Html.Partial("_Resultados_Arquivo", Model)
+    <div class="span6 pull-right" style="text-align: right">
+        <p>Total : @Model.TabelasBrutas.TabelaArquivo.Select(x => x.Resultado).Sum()</p>
+    </div>
+
+    <hr />
+
+    <h4>Tabela Consulta</h4>
+    @Html.Partial("_Resultados_Consulta", Model)
+    <div class="span6 pull-right" style="text-align:right">
+        <p>Total : @Model.TabelasBrutas.TabelaConsulta.Select(x => x.Resultado).Sum()</p>
+    </div>
+    <hr />
+
+    <h4>Tabela de Entrada</h4>
+    @Html.Partial("_Resultados_Entrada", Model)
+    <div class="span6 pull-right" style="text-align: right">
+        <p>Total : @Model.TabelasBrutas.TabelaEntrada.Select(x => x.Resultado).Sum()</p>
+    </div>
+
+    <hr />
+
+    <h4>Tabela Interface</h4>
+    @Html.Partial("_Resultados_Interface", Model)
+    <div class="span6 pull-right" style="text-align:right">
+        <p>Total : @Model.TabelasBrutas.TabelaInterface.Select(x => x.Resultado).Sum()</p>
+    </div>
+    <hr />
+
+    <h4>Tabela Saida</h4>
+    @Html.Partial("_Resultados_Saida", Model)
+    <div class="span6 pull-right" style="text-align:right">
+        <p>Total : @Model.TabelasBrutas.TabelaSaida.Select(x => x.Resultado).Sum()</p>
+    </div>
+    <hr />
+
+    <div>
+        <p>Valor FPB : @Model.TabelasBrutas.FPB</p>
+    </div>
+
+    <div>
+        <p>Preco da Linguagem : @Model.PrecoDaLinguagem</p>
+    </div>
+
+    <div>
+        <p>Tempo Total: @Model.TempoTotal</p>
+    </div>
+
+    <div>
+        <p>Valor Iso : @Model.ValorIso</p>
+    </div>
+
+    <div>
+        <p>Custo Projeto : @Model.CustoProjeto</p>
+    </div>
+
+
+}

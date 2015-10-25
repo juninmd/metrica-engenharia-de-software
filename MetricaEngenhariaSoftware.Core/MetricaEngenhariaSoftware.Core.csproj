@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CalcularMetricas\MetricasBase.cs" />
     <Compile Include="Constants\Constant.cs" />
+    <Compile Include="Gerenciar.cs" />
     <Compile Include="Utilidades\Debugar.cs" />
     <Compile Include="Entidade\Tabela Base\Contador.cs" />
     <Compile Include="Entidade\TabelasBrutas.cs" />
@@ -58,7 +59,6 @@
     <Compile Include="CalcularMetricas\MetricasSaida.cs" />
     <Compile Include="CalcularMetricas\MetricasEntrada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilidades\Matematica.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
