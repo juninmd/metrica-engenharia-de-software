@@ -4,7 +4,20 @@ namespace MetricaEngenhariaSoftware.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult InserirTabelas()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Parametros()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Resultados()
         {
             return View();
         }
