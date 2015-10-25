@@ -1,4 +1,5 @@
-﻿@model MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TabelaDominioContainer
+﻿@using MetricaEngenhariaSoftware.Core.Constants
+@model MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TabelaDominioContainer
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -60,11 +61,14 @@ else
     <hr />
 
     <div>
-        <p>Valor FPB : @Model.TabelasBrutas.FPB</p>
+        <p>Valor ISO : @Iso.ISO9126</p>
+    </div>
+    <div>
+        <p>Valor FPB : @Model.TabelasBrutas.FPB </p>
     </div>
 
     <div>
-        <p>Preco da Linguagem : @Model.PrecoDaLinguagem</p>
+        <p>Preco da Linguagem : @Model.PrecoDaLinguagem - @Model.NomeLinguagemDoSistema - @Model.NomeTipoDoSistema </p>
     </div>
 
     <div>
