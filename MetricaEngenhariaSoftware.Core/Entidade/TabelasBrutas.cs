@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MetricaEngenhariaSoftware.Core.Constants;
 using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TiposTabela;
@@ -21,6 +22,9 @@ namespace MetricaEngenhariaSoftware.Core.Entidade
                 TabelaInterface.Select(x => x.Resultado).Sum() +
                 TabelaSaida.Select(x => x.Resultado).Sum();
 
-        public double CalculoBase => FPB*Constant.FA;
+        /// <summary>
+        /// FPB * FA
+        /// </summary>
+        public double CalculoBase => Math.Round(FPB * Constant.FA);
     }
 }

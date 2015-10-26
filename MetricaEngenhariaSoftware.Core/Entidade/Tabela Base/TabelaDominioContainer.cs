@@ -23,9 +23,7 @@ namespace MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base
         /* ------------------- ITENS DO SISTEMA -------------------*/
 
         public double PrecoDaLinguagem { get; set; }
-        public double TempoTotal { get; set; }
-        public double ValorIso => TempoTotal * Iso.ISO9126;
-        public double CustoProjeto => ValorIso * 90;
+        public double Meses { get; set; }
         public TabelasBrutas TabelasBrutas { get; set; }
     }
 }
