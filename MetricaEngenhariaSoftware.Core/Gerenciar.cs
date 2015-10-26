@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MetricaEngenhariaSoftware.Core.CalcularMetricas;
 using MetricaEngenhariaSoftware.Core.Constants;
@@ -29,6 +30,9 @@ namespace MetricaEngenhariaSoftware.Core
             CalcularTabelasBrutas(TabelaDominioContainer);
 
             CalcularCusto(TabelaDominioContainer);
+
+            var meses = Math.Round(TabelaDominioContainer.Meses,2,MidpointRounding.ToEven);
+
 
 
             return TabelaDominioContainer;
@@ -71,13 +75,17 @@ namespace MetricaEngenhariaSoftware.Core
             switch (tabelaDominioContainer.TipoDoSistema)
             {
                 case 1:
-                    tabelaDominioContainer.TempoTotal = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Web;
+                    tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Web;
                     tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA WEB";
 
                     break;
                 case 2:
-                    tabelaDominioContainer.TempoTotal = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Comercial;
+                    tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Comercial;
                     tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA COMERCIAL";
+                    break;
+                case 3:
+                    tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.ComercioEletronico;
+                    tabelaDominioContainer.NomeTipoDoSistema = "E-comerce";
                     break;
             }
 
