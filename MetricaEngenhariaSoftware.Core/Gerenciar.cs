@@ -48,7 +48,11 @@ namespace MetricaEngenhariaSoftware.Core
             var segundosTotal = 60 * double.Parse("0," + minutosTotal.ToString().Split(',')[1]);
             var segundos = segundosTotal.ToString().Split(',')[0];
 
+            var resultadoSegundos = $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
 
+            TabelaDominioContainer.TempoTotalGeral = resultadoSegundos;
+            TabelaDominioContainer.TempoTotal = double.Parse(mesesTotal);
+            TabelaDominioContainer.CalculoFinal = TabelaDominioContainer.TempoTotal *  TabelaDominioContainer.PrecoDaLinguagem * 20.0;
             return TabelaDominioContainer;
         }
 

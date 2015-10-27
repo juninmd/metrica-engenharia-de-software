@@ -54,10 +54,7 @@ else
         <p>Total : @Model.TabelasBrutas.TabelaSaida.Select(x => x.Resultado).Sum()</p>
     </div>
     <hr />
-
-    <div>
-        <p>Valor ISO : @Iso.ISO9126</p>
-    </div>
+ 
     <div>
         <p>Valor FPB : @Model.TabelasBrutas.FPB </p>
     </div>
@@ -67,15 +64,16 @@ else
     </div>
 
     <div>
+        <p>Tempo Total Geral : @Model.TempoTotalGeral </p>
+    </div>
+
+    <div>
         <p>Tempo Total: @Model.TempoTotal</p>
     </div>
 
-    <div>
-        <p>Valor Iso : @Model.ValorIso</p>
-    </div>
 
     <div>
-        <p>Custo Projeto : @Model.CustoProjeto</p>
+        <p>Este sistema vai lhe Custar: @Model.CalculoFinal</p>
     </div>
 
 

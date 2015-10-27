@@ -24,6 +24,9 @@ namespace MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base
 
         public double PrecoDaLinguagem { get; set; }
         public double Meses { get; set; }
+        public double TempoTotal { get; set; }
+        public double CalculoFinal { get; set; }
+        public string TempoTotalGeral { get; set; }
         public TabelasBrutas TabelasBrutas { get; set; }
     }
 }
