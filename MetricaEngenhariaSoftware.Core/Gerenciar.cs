@@ -31,8 +31,22 @@ namespace MetricaEngenhariaSoftware.Core
 
             CalcularCusto(TabelaDominioContainer);
 
-            var meses = Math.Round(TabelaDominioContainer.Meses,2,MidpointRounding.ToEven);
 
+            var mesesTotal = (TabelaDominioContainer.Meses).ToString().Substring(0, TabelaDominioContainer.Meses.ToString().IndexOf(",") +3);
+            var meses = mesesTotal.Split(',')[0];
+            var porcMeses = mesesTotal.Split(',')[1];
+
+            var diasTotal = 22* double.Parse("0," + porcMeses);
+            var dias = diasTotal.ToString().Split(',')[0];
+
+            var horasTotal = 6 * double.Parse("0," + diasTotal.ToString().Split(',')[1]);
+            var horas = horasTotal.ToString().Split(',')[0];
+
+            var minutosTotal = 60 * double.Parse("0," + horasTotal.ToString().Split(',')[1]);
+            var minutos = minutosTotal.ToString().Split(',')[0];
+
+            var segundosTotal = 60 * double.Parse("0," + minutosTotal.ToString().Split(',')[1]);
+            var segundos = segundosTotal.ToString().Split(',')[0];
 
 
             return TabelaDominioContainer;
