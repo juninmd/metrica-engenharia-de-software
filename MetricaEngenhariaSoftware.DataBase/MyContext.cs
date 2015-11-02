@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using MetricaEngenhariaSoftware.Entity.Entidade.MES;
 
 namespace MetricaEngenhariaSoftware.DataBase
@@ -10,8 +11,23 @@ namespace MetricaEngenhariaSoftware.DataBase
 
         }
 
-        protected void OnModelCreating()
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+        /*    modelBuilder.Properties()
+                .Where(p => p.Name == "IntId" + p.ReflectedType.Name)
+                .Configure(p =>p.IsKey());*/
+ 
+
+            modelBuilder.Properties<string>()
+                .Configure(p => p.HasColumnType("varchar"));
+
+            modelBuilder.Properties<string>()
+                .Configure(p => p.HasMaxLength(50));
+
         }
 
         public virtual DbSet<MES_FA> MES_FA { get; set; }

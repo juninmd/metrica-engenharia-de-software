@@ -1,8 +1,41 @@
-﻿@model dynamic
+﻿@model List<MetricaEngenhariaSoftware.Entity.Entidade.MES.MES_FA>
 
 @{
-    ViewBag.Title = "title";
     Layout = "../Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<h4>Cadastro de FA</h4>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Você não inseriu ainda os paramêtros</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID FA</th>
+                <th>Valor FA</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IntIdFa</td>
+                    <td>@item.DecValorFa</td>
+                    <td><a href="@Url.Action("Details",new {id = item.IntIdFa})" class="btn-block">Editar</a></td>
+                    <td><a href="@Url.Action("Delete",new {id = item.IntIdFa})" class="btn-block">Excluir</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+<hr />
+<div class="btn-group">
+    <a class="btn btn-block" href="@Url.Action("Details")">Cadastrar</a>
+</div>
