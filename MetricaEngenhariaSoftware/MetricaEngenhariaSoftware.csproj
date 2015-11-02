@@ -128,6 +128,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\TipoSistemaController.cs" />
+    <Compile Include="Controllers\LinguagemController.cs" />
+    <Compile Include="Controllers\IsoController.cs" />
     <Compile Include="Controllers\FaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,14 +179,18 @@
     <Content Include="Views\Home\_Resultados_Consulta.cshtml" />
     <Content Include="Views\Home\_Resultados_Interface.cshtml" />
     <Content Include="Views\Home\_Resultados_Saida.cshtml" />
-    <Content Include="Views\Fa\Index.cshtml" />
-    <Content Include="Views\Fa\Details.cshtml" />
     <Content Include="Views\Fa\Grid.cshtml" />
+    <Content Include="Views\Iso\Details.cshtml" />
+    <Content Include="Views\Iso\Grid.cshtml" />
+    <Content Include="Views\Fa\Details.cshtml" />
+    <Content Include="Views\Linguagem\Details.cshtml" />
+    <Content Include="Views\Linguagem\Grid.cshtml" />
+    <Content Include="Views\TipoSistema\Details.cshtml" />
+    <Content Include="Views\TipoSistema\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\TipoSistema\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

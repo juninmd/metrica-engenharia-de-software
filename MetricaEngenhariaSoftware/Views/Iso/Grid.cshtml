@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MetricaEngenhariaSoftware.Entity.Entidade.MES.MES_ISO>
+
+@{
+    ViewBag.Title = "Grid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grid</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Você não inseriu ainda os paramêtros</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNomeIso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntValorIso)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StrNomeIso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IntValorIso)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.IntIdIso }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.IntIdIso })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<hr />
+<div class="btn-group">
+    <a class="btn btn-block" href="@Url.Action("Details")">Cadastrar</a>
+</div>
