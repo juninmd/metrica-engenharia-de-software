@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using MetricaEngenhariaSoftware.DataBase.Interfaces;
+using MetricaEngenhariaSoftware.Entity.Entidade.MES;
 
 namespace MetricaEngenhariaSoftware.DataBase.Repository
 {
@@ -23,16 +24,19 @@ namespace MetricaEngenhariaSoftware.DataBase.Repository
         {
             var item = _context.Set<T>().Find(id);
             _context.Set<T>().Remove(item);
+            _context.SaveChanges();
         }
 
         public void Add(T entidade)
         {
             _context.Set<T>().Add(entidade);
+            _context.SaveChanges();
         }
-    
+
         public void Update(T entidade)
         {
             _context.Entry(entidade).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public List<T> GetAll()

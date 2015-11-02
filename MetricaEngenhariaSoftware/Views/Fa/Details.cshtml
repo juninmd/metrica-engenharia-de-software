@@ -1,8 +1,22 @@
-﻿@model dynamic
+﻿@model MetricaEngenhariaSoftware.Entity.Entidade.MES.MES_FA
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    Layout = "../Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<h2>FA</h2>
+
+<form method="POST" action="@Url.Action("Create")">
+    <div class="col-md-5 form-inline">
+        <div >
+            <label>Valor da FA:</label>
+            <input type="number" min="0" required="" autocomplete="off" class="form-control" name="DecValorFa" style="width: 280px" placeholder="ex : Usuário" value="@Model.DecValorFa">
+        </div>
+    </div>
+
+    <div class="col-md-2 form-inline">
+        <div class="btn-group-vertical">
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+    </div>
+</form>

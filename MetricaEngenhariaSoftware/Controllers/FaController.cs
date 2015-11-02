@@ -16,10 +16,10 @@ namespace MetricaEngenhariaSoftware.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            var request = GenericRepository.GetById(id);
-            return View();
+            var request = id.HasValue ? GenericRepository.GetById(id.Value) : new MES_FA();
+            return View(request);
         }
 
         [HttpGet]
@@ -32,18 +32,15 @@ namespace MetricaEngenhariaSoftware.Controllers
         [HttpPost]
         public ActionResult Create(MES_FA MES_FA)
         {
-            GenericRepository.Add(MES_FA);
+            if (MES_FA.IntIdFa == 0)
+                GenericRepository.Add(MES_FA);
+            else
+            {
+                GenericRepository.Update(MES_FA);
+            }
 
             return RedirectToAction("Grid");
         }
-
-        [HttpPost]
-        public ActionResult Edit(MES_FA MES_FA)
-        {
-
-            GenericRepository.Update(MES_FA);
-
-            return RedirectToAction("Grid");
-        }
+       
     }
 }
