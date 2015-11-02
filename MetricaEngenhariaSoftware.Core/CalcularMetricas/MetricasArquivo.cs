@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
-using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TiposTabela;
 using MetricaEngenhariaSoftware.Core.Utilidades;
+using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
+using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.TiposTabela;
 
 namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {

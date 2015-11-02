@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using MetricaEngenhariaSoftware.Core;
 using MetricaEngenhariaSoftware.Core.CalcularMetricas;
-using MetricaEngenhariaSoftware.Core.Constants;
-using MetricaEngenhariaSoftware.Core.Entidade;
-using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
-using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TiposTabela;
+using MetricaEngenhariaSoftware.Entity.Entidade;
+using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
+using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.TiposTabela;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MetricaEngenhariaSoftware.Test
@@ -119,14 +116,7 @@ namespace MetricaEngenhariaSoftware.Test
 
 
             var valorBase = Math.Round(MetricasBase.CalcularBase(totalFPB));
-
-            var PrecoDaLinguagem = valorBase * Linguagens.Java;
-
-            var TempoTotal = Math.Round(PrecoDaLinguagem / Sistema.Web);
-
-            var valorIso = TempoTotal * Iso.ISO9126;
-
-            var custoProjeto = valorIso*90;
+ 
         }
 
 

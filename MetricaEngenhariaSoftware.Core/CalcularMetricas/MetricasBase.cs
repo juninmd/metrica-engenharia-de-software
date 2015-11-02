@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using MetricaEngenhariaSoftware.Core.Constants;
 
 namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {
@@ -9,7 +8,7 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
         {
             Debug.WriteLine("######## BASE ########");
 
-            var calcularBase = totalFPB * Constant.FA;
+            var calcularBase = totalFPB /** Constant.FA*/;
             Debug.WriteLine("######## FIM BASE ########");
             return calcularBase;
 

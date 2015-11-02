@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base.TiposTabela
+namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.TiposTabela
 {
     public class ListaTabelaConsulta
     {

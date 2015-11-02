@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
+using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
 
 namespace MetricaEngenhariaSoftware.Core.Utilidades
 {
