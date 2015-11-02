@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,6 +176,9 @@
     <Content Include="Views\Home\_Resultados_Consulta.cshtml" />
     <Content Include="Views\Home\_Resultados_Interface.cshtml" />
     <Content Include="Views\Home\_Resultados_Saida.cshtml" />
+    <Content Include="Views\Fa\Index.cshtml" />
+    <Content Include="Views\Fa\Details.cshtml" />
+    <Content Include="Views\Fa\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -195,7 +199,7 @@
       <Name>MetricaEngenhariaSoftware.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\MetricaEngenhariaSoftware.DataBase\MetricaEngenhariaSoftware.DataBase.csproj">
-      <Project>{546431a4-1142-4f35-96b2-80ef7933f523}</Project>
+      <Project>{7853A002-5815-4701-9794-3E656D17F124}</Project>
       <Name>MetricaEngenhariaSoftware.DataBase</Name>
     </ProjectReference>
     <ProjectReference Include="..\MetricaEngenhariaSoftware.Entity\MetricaEngenhariaSoftware.Entity.csproj">
