@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9BFAE168-4B41-4C86-8E63-DB4C2C5CAE22}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{8D5C5639-4E40-4B87-B00D-C6BEAB0E2338}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MetricaEngenhariaSoftware.Core</RootNamespace>
-    <AssemblyName>MetricaEngenhariaSoftware.Core</AssemblyName>
+    <RootNamespace>MetricaEngenhariaSoftware.Entity</RootNamespace>
+    <AssemblyName>MetricaEngenhariaSoftware.Entity</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,21 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalcularMetricas\MetricasBase.cs" />
-    <Compile Include="Gerenciar.cs" />
-    <Compile Include="Utilidades\Debugar.cs" />
-    <Compile Include="CalcularMetricas\MetricasArquivo.cs" />
-    <Compile Include="CalcularMetricas\MetricasInterface.cs" />
-    <Compile Include="CalcularMetricas\MetricasConsulta.cs" />
-    <Compile Include="CalcularMetricas\MetricasSaida.cs" />
-    <Compile Include="CalcularMetricas\MetricasEntrada.cs" />
+    <Compile Include="Entidade\Tabela Base\Contador.cs" />
+    <Compile Include="Entidade\Tabela Base\TabelaDominio.cs" />
+    <Compile Include="Entidade\Tabela Base\TabelaDominioContainer.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaArquivo.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaConsulta.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaEntrada.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaInterface.cs" />
+    <Compile Include="Entidade\Tabela Base\TiposTabela\TabelaSaida.cs" />
+    <Compile Include="Entidade\TabelasBrutas.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MetricaEngenhariaSoftware.Entity\MetricaEngenhariaSoftware.Entity.csproj">
-      <Project>{8D5C5639-4E40-4B87-B00D-C6BEAB0E2338}</Project>
-      <Name>MetricaEngenhariaSoftware.Entity</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

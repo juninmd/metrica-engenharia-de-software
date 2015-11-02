@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using MetricaEngenhariaSoftware.Core.CalcularMetricas;
-using MetricaEngenhariaSoftware.Core.Constants;
-using MetricaEngenhariaSoftware.Core.Entidade;
-using MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base;
+using MetricaEngenhariaSoftware.Entity.Entidade;
+using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
 
 namespace MetricaEngenhariaSoftware.Core
 {
@@ -73,7 +72,7 @@ namespace MetricaEngenhariaSoftware.Core
 
         private void CalcularCusto(TabelaDominioContainer tabelaDominioContainer)
         {
-            /* Calcula por tipo Linguagem  1 -java 2 -vb 3 -gc*/
+          /*  /* Calcula por tipo Linguagem  1 -java 2 -vb 3 -gc#1#
             switch (tabelaDominioContainer.LinguagemDoSistema)
             {
                 case 1:
@@ -89,7 +88,7 @@ namespace MetricaEngenhariaSoftware.Core
                     tabelaDominioContainer.NomeLinguagemDoSistema = "GERADOR DE CÓDIGO";
                     break;
             }
-            /* Calcula por tipo de sistema 1web 2comercial*/
+            /* Calcula por tipo de sistema 1web 2comercial#1#
             switch (tabelaDominioContainer.TipoDoSistema)
             {
                 case 1:
@@ -106,7 +105,7 @@ namespace MetricaEngenhariaSoftware.Core
                     tabelaDominioContainer.NomeTipoDoSistema = "E-comerce";
                     break;
             }
-
+*/
         }
 
 

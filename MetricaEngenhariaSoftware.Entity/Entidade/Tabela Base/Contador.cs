@@ -1,4 +1,4 @@
-﻿namespace MetricaEngenhariaSoftware.Core.Entidade.Tabela_Base
+﻿namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base
 {
     public class Contador
     {

@@ -185,6 +185,10 @@
       <Project>{9BFAE168-4B41-4C86-8E63-DB4C2C5CAE22}</Project>
       <Name>MetricaEngenhariaSoftware.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MetricaEngenhariaSoftware.Entity\MetricaEngenhariaSoftware.Entity.csproj">
+      <Project>{8D5C5639-4E40-4B87-B00D-C6BEAB0E2338}</Project>
+      <Name>MetricaEngenhariaSoftware.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
