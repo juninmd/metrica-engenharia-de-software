@@ -1,28 +1,43 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using MetricaEngenhariaSoftware.DataBase.Interfaces;
 
 namespace MetricaEngenhariaSoftware.DataBase.Repository
 {
-    public class BaseRepository<T> : IBaseRepository<T>
+    public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        public T GetById()
+        private readonly MyContext _context;
+
+        public BaseRepository(MyContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
+        }
+
+        public T GetById(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
+
+        public void Delete(int id)
+        {
+            var item = _context.Set<T>().Find(id);
+            _context.Set<T>().Remove(item);
         }
 
         public void Add(T entidade)
         {
-            throw new System.NotImplementedException();
+            _context.Set<T>().Add(entidade);
         }
-
+    
         public void Update(T entidade)
         {
-            throw new System.NotImplementedException();
+            _context.Entry(entidade).State = EntityState.Modified;
         }
 
         public List<T> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _context.Set<T>().ToList();
         }
     }
 }

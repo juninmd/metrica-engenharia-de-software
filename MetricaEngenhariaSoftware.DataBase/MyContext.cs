@@ -5,7 +5,7 @@ namespace MetricaEngenhariaSoftware.DataBase
 {
     public class MyContext : DbContext
     {
-        public MyContext() : base("name=ConectionDB")
+        public MyContext() : base("ConectionDB")
         {
 
         }
