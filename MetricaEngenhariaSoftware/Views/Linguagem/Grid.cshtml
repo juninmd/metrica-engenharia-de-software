@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MetricaEngenhariaSoftware.Entity.Entidade.MES.MES_LINGUAGEM_PROGRAMACAO>
+
+@{
+    ViewBag.Title = "Grid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grid</h2>
+ @if (Model == null || !Model.Any())
+ {
+     <p>Você não inseriu ainda os paramêtros</p>
+ }
+ else
+ {
+     <table class="table">
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.StrNomeLinguagemProgramacao)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.DecValorLinguagemProgramacao)
+             </th>
+             <th></th>
+         </tr>
+
+         @foreach (var item in Model)
+         {
+             <tr>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.StrNomeLinguagemProgramacao)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.DecValorLinguagemProgramacao)
+                 </td>
+                 <td>
+                     @Html.ActionLink("Details", "Details", new {id = item.IntIdLinguagemProgramacao}) |
+                     @Html.ActionLink("Delete", "Delete", new {id = item.IntIdLinguagemProgramacao})
+                 </td>
+             </tr>
+         }
+
+     </table>
+ }
+<hr />
+<div class="btn-group">
+    <a class="btn btn-block" href="@Url.Action("Details")">Cadastrar</a>
+</div>

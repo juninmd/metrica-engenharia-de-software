@@ -14,7 +14,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inserir Tabelas", "InserirTabelas", "Home")</li>
-                    <li>@Html.ActionLink("Parametros", "Parametros", "Home")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Paramêtros<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("FA", "Grid", "Fa")</li>
+                            <li>@Html.ActionLink("ISO", "Grid", "Iso")</li>
+                            <li>@Html.ActionLink("Linguagens de Programação", "Grid", "Linguagem")</li>
+                            <li>@Html.ActionLink("Tipos de Sistema", "Grid", "TipoSistema")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Resultados", "Resultados", "Home")</li>
                 </ul>
             </div>

@@ -1,22 +1,40 @@
 ﻿@model MetricaEngenhariaSoftware.Entity.Entidade.MES.MES_FA
 
 @{
-    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>FA</h2>
-<form method="POST" action="@Url.Action("AddOrUpdate")">
-    @Html.HiddenFor(x => x.IntIdFa)
-    <div class="col-md-5 form-inline">
-        <div>
-            <label>Valor da FA:</label>
-            <input type="number" min="0" required="" autocomplete="off" class="form-control" name="DecValorFa" style="width: 280px" placeholder="ex : Usuário" value="@Model.DecValorFa">
-        </div>
-    </div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IntIdFa)
 
-    <div class="col-md-2 form-inline">
-        <div class="btn-group-vertical">
-            <button type="submit" class="btn btn-success">Enviar</button>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DecValorFa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DecValorFa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DecValorFa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</form>
+}
+
+<div>
+    @Html.ActionLink("Voltar para a Lista", "Grid")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
