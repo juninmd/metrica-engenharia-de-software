@@ -6,8 +6,7 @@ namespace MetricaEngenhariaSoftware.DataBase.Interfaces
     {
         T GetById(int id);
         void Delete(int id);
-        void Add(T entidade);
-        void Update(T entidade);
+        void AddOrUpdate(T entidade);
         List<T> GetAll();
 
     }

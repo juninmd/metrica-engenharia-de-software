@@ -30,14 +30,9 @@ namespace MetricaEngenhariaSoftware.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(MES_FA MES_FA)
+        public ActionResult AddOrUpdate(MES_FA MES_FA)
         {
-            if (MES_FA.IntIdFa == 0)
-                GenericRepository.Add(MES_FA);
-            else
-            {
-                GenericRepository.Update(MES_FA);
-            }
+            GenericRepository.AddOrUpdate(MES_FA);
 
             return RedirectToAction("Grid");
         }

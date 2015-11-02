@@ -5,10 +5,10 @@
 }
 
 <h2>FA</h2>
-
-<form method="POST" action="@Url.Action("Create")">
+<form method="POST" action="@Url.Action("AddOrUpdate")">
+    @Html.HiddenFor(x => x.IntIdFa)
     <div class="col-md-5 form-inline">
-        <div >
+        <div>
             <label>Valor da FA:</label>
             <input type="number" min="0" required="" autocomplete="off" class="form-control" name="DecValorFa" style="width: 280px" placeholder="ex : Usuário" value="@Model.DecValorFa">
         </div>
