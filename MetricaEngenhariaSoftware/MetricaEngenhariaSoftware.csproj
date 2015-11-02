@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -171,6 +179,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\TipoSistema\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -184,6 +193,10 @@
     <ProjectReference Include="..\MetricaEngenhariaSoftware.Core\MetricaEngenhariaSoftware.Core.csproj">
       <Project>{9BFAE168-4B41-4C86-8E63-DB4C2C5CAE22}</Project>
       <Name>MetricaEngenhariaSoftware.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MetricaEngenhariaSoftware.DataBase\MetricaEngenhariaSoftware.DataBase.csproj">
+      <Project>{546431a4-1142-4f35-96b2-80ef7933f523}</Project>
+      <Name>MetricaEngenhariaSoftware.DataBase</Name>
     </ProjectReference>
     <ProjectReference Include="..\MetricaEngenhariaSoftware.Entity\MetricaEngenhariaSoftware.Entity.csproj">
       <Project>{8D5C5639-4E40-4B87-B00D-C6BEAB0E2338}</Project>
