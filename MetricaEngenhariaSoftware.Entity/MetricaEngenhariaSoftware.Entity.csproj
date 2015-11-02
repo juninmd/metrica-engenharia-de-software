@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidade\MES\MES_FA.cs" />
+    <Compile Include="Entidade\MES\MES_ISO.cs" />
+    <Compile Include="Entidade\MES\MES_LINGUAGEM_PROGRAMACAO.cs" />
+    <Compile Include="Entidade\MES\MES_TIPO_SISTEMA.cs" />
     <Compile Include="Entidade\Tabela Base\Contador.cs" />
     <Compile Include="Entidade\Tabela Base\TabelaDominio.cs" />
     <Compile Include="Entidade\Tabela Base\TabelaDominioContainer.cs" />
