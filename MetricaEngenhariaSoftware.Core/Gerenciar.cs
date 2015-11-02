@@ -30,12 +30,19 @@ namespace MetricaEngenhariaSoftware.Core
 
             CalcularCusto(TabelaDominioContainer);
 
+            TabelaDominioContainer.TempoTotalGeral = CalcularTempo(TabelaDominioContainer.Meses); 
+            TabelaDominioContainer.TempoTotal = double.Parse((TabelaDominioContainer.Meses).ToString().Substring(0, TabelaDominioContainer.Meses.ToString().IndexOf(",") + 3));
+            TabelaDominioContainer.CalculoFinal = TabelaDominioContainer.TempoTotal *  TabelaDominioContainer.PrecoDaLinguagem * 20.0;
+            return TabelaDominioContainer;
+        }
 
-            var mesesTotal = (TabelaDominioContainer.Meses).ToString().Substring(0, TabelaDominioContainer.Meses.ToString().IndexOf(",") +3);
+        private string CalcularTempo(double containerMeses)
+        {
+            var mesesTotal = (containerMeses).ToString().Substring(0, containerMeses.ToString().IndexOf(",") + 3);
             var meses = mesesTotal.Split(',')[0];
             var porcMeses = mesesTotal.Split(',')[1];
 
-            var diasTotal = 22* double.Parse("0," + porcMeses);
+            var diasTotal = 22 * double.Parse("0," + porcMeses);
             var dias = diasTotal.ToString().Split(',')[0];
 
             var horasTotal = 6 * double.Parse("0," + diasTotal.ToString().Split(',')[1]);
@@ -47,14 +54,8 @@ namespace MetricaEngenhariaSoftware.Core
             var segundosTotal = 60 * double.Parse("0," + minutosTotal.ToString().Split(',')[1]);
             var segundos = segundosTotal.ToString().Split(',')[0];
 
-            var resultadoSegundos = $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
-
-            TabelaDominioContainer.TempoTotalGeral = resultadoSegundos;
-            TabelaDominioContainer.TempoTotal = double.Parse(mesesTotal);
-            TabelaDominioContainer.CalculoFinal = TabelaDominioContainer.TempoTotal *  TabelaDominioContainer.PrecoDaLinguagem * 20.0;
-            return TabelaDominioContainer;
+            return $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
         }
-
         private void CalcularTabelasBrutas(TabelaDominioContainer tabelaDominioContainer)
         {
 

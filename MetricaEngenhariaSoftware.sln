@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentos", "Documentos", "{00719282-32C4-4C4A-8A5D-D0ED8276731F}"
 	ProjectSection(SolutionItems) = preProject
 		Documentos\009_Engenharia de Software_Metricas_2.pdf = Documentos\009_Engenharia de Software_Metricas_2.pdf
+		querys.txt = querys.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricaEngenhariaSoftware.DataBase", "MetricaEngenhariaSoftware.DataBase\MetricaEngenhariaSoftware.DataBase.csproj", "{546431A4-1142-4F35-96B2-80EF7933F523}"
