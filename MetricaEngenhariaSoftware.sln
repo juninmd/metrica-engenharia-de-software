@@ -12,6 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentos", "Documentos", "{00719282-32C4-4C4A-8A5D-D0ED8276731F}"
 	ProjectSection(SolutionItems) = preProject
 		Documentos\009_Engenharia de Software_Metricas_2.pdf = Documentos\009_Engenharia de Software_Metricas_2.pdf
+		Documentos\Projeto A.txt = Documentos\Projeto A.txt
+		Documentos\Projeto B.txt = Documentos\Projeto B.txt
+		Documentos\Projeto C.txt = Documentos\Projeto C.txt
+		Documentos\Projeto D.txt = Documentos\Projeto D.txt
 		querys.txt = querys.txt
 	EndProjectSection
 EndProject

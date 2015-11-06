@@ -1,0 +1,81 @@
+Tabela
+A => 3
+B => 5
+C => 8
+D => 11
+E => 14
+F => 13
+G => 12
+
+
+=======================
+
+	S	M	C
+E	1	0	6
+S	2	1	5
+C	1	1	6
+A	0	7	0
+I	0	8	0
+
+
+========================
+Entrada
+	Simples	: 3 * 1: 3
+	Médio	: 4 * 0: 0
+	Complexo: 6 * 6: 36
+	Total: 39
+
+Saida
+	Simples	:4 * 2: 8
+	Médio	:5 * 1: 5
+	Complexo:7 * 5: 35
+	Total: 48
+
+Consulta
+	Simples	:3 * 1: 3
+	Médio	:4 * 1: 4
+	Complexo:6 * 6: 36
+	Total: 43
+
+Arquivos
+	Simples	:7 * 0 : 0
+	Médio	:10 * 7	:70
+	Complexo:15 * 0: 0
+	Total: 70
+
+Interfaces
+	Simples	: 5 * 0: 0
+	Médio	: 7 * 8: 56
+	Complexo: 10 * 0: 0
+	Total: 56
+
+
+================================
+FP'B 256
+FA: 1,35
+FP'R 345,6: 346
+
+================================
+
+FPR * Linguagem / Tipo do Sistema
+
+Meses = (346 *  20)/2500 = 2,76 = 2 Meses 76%
+Dias = 22 * 0,76 = 16 dias e 72%
+Horas = 6 * 0,72 = 4 horas 32%
+MInutos = 60 * 0,32 = 19 minutos 20%
+Segundos = 60 * 0,20 = 12 segundos
+
+
+Custo
+2 Meses * 132 h/Mes = 264
+16 * 6 = 	      96
+		      4 
+19 minutos/60 =       0,316
+12 segundos/60/60     0,003
+Total		      7,286.40
+
+
+
+Tempo X Horas/Mes X Valor Hora = Preço
+
+ 

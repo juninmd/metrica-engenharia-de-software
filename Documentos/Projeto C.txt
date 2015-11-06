@@ -1,0 +1,82 @@
+Tabela
+A => 7
+B => 8
+C => 3
+D => 13
+E => 15
+F => 4
+G => 6
+H => 8
+I => 11
+J => 13
+
+==================================
+	S	M	C
+E	2	0	8
+S	2	1	8
+C	2	1	8
+A	0	10	0
+I	0	11	0
+
+
+
+==================================
+
+Entrada
+	Simples : 3 * 2 = 6
+	Médio	: 4 * 0 = 0
+	Complexo: 6 * 8 = 48
+	Total	: 54
+
+Saida
+	Simples : 4 * 2 = 8
+	Médio	: 5 * 1 = 5
+	Complexo: 7 * 8 = 56
+	Total	: 69
+
+Consulta
+	Simples : 3 * 2 = 6
+	Médio	: 4 * 1 = 4
+	Complexo: 6 * 8 = 48
+	Total	: 58
+
+Arquivo
+	Simples : 7 * 0 = 0
+	Médio	: 10* 10 = 100
+	Complexo: 15* 0 = 0
+	Total	: 100
+
+INterface
+	Simples : 5 * 0 = 0
+	Médio	: 7 * 11 = 77
+	Complexo: 10* 0 = 0
+	Total	: 77
+
+Total: 358
+
+=================
+FP'B 	= 358
+FA	= 1,35
+FP'R	= 483.3 = 483
+
+
+=================
+
+
+FP'R * Linguagem/ Tipo Sistema
+
+Meses = (483 * 20)/ 3600 = 2 Meses e 68%
+Dias = 22 * 0,68 = 14 dias e 96%
+Horas = 6 * 0,96 = 5 horas e 76%
+Minutos = 60 * 0,76 = 45 MInutos e 60%
+Segundos = 60 * 0,60 = 36 segundos
+
+==================
+
+Meses 2 * 132 = 264 Horas
+Dias 14 * 6 = 84 horas
+Horas = 5 Horas
+Minutos 45/60 = 0,75
+Segundos 36/60/60 = 0,01
+
+Total R$ 14.150.40
