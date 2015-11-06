@@ -6,7 +6,7 @@
 }
 
 <h2>Linguagem de Programação</h2>
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddOrUpdate","Linguagem",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
