@@ -1,4 +1,6 @@
-﻿@model dynamic
+﻿@using MetricaEngenhariaSoftware.Infra
+@using MetricaEngenhariaSoftware.Infra.HtmlHelpers
+@model dynamic
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +19,7 @@
 </div>
 
 <form method="POST">
-    <div class="col-md-6 form-inline">
+    <div class="col-md-4 form-inline">
         <div class="form-inline">
             <div class="row">
                 <div class="form-group" style="padding-right: 240px">
@@ -34,15 +36,16 @@
                         <input type="text" required="" autocomplete="off" class="form-control" name="NomeTabela" style="width: 280px" placeholder="ex : Usuário">
                     </div>
                     <div style="display: inline-block; width: 80px">
-                        <input type="number" required="" autocomplete="off"  min="0" class="form-control" name="QuantidadeAtributos" placeholder="ex : 5">
+                        <input type="number" required="" autocomplete="off" min="0" class="form-control" name="QuantidadeAtributos" placeholder="ex : 5">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-2 form-inline">
+    <div class="col-md-4 form-inline">
         <div class="btn-group-vertical">
-            <button type="button" id="btnAdicionar" class="btn btn-warning">Adicionar Tabela</button>
+            <button type="button" id="btnAdicionar" class="btn btn-warning">Adicionar Tabela(s) [+]</button>
+            <button type="button" class="btn btn-info">Adicionar Tabela(s) via Banco de Dados [+]</button>
             <button type="button" id="btnLimpar" class="btn btn-danger">Limpar</button>
             <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>
         </div>
@@ -52,23 +55,35 @@
 
 
         <div class="container">
-            <form role="form">
+            <p><b>Parametrização:</b></p>
+
+            <div class="container">
                 <div class="form-group">
                     <label>Linguagem do Sistema:</label>
-                    <select required="" name="LinguagemDoSistema">
-                        <option value="1" selected="">Java</option>
-                        <option value="2">VB</option>
-                        <option value="3">GC</option>
-                    </select>
+                    @Html.Linguagens()
                 </div>
+            </div>
+
+            <div class="container">
                 <div class="form-group">
                     <label>Tipo do Sistema:</label>
-                    <select required="" name="TipoDoSistema">
-                        <option value="1" selected="">Web</option>
-                        <option value="2">Comercial</option>
-                    </select>
+                    @Html.TipoSistemas()
                 </div>
-            </form>
+            </div>
+
+            <div class="container">
+                <div class="form-group">
+                    <label>Iso:</label>
+                    @Html.Isos()
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="form-group">
+                    <label>FA:</label>
+                    @Html.Fa()
+                </div>
+            </div>
         </div>
 
 
