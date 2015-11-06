@@ -1,0 +1,80 @@
+Tabela
+A => 3
+B => 9
+C => 15
+D => 4
+E => 2
+F => 8
+G => 7
+H => 3
+I => 9
+J => 4
+K => 5
+L => 8
+
+
+=================================
+	S	M	C
+E	0	5	7
+S	0	7	6
+C	0	6	7
+A	0	12	0
+I	0	13	0
+
+=================================
+
+Entrada
+	Simples : 3 * 0 = 0
+	Médio	: 4 * 5 = 20
+	Complexo: 6 * 7 = 42
+	Total	: 62
+
+Saida
+	Simples : 4 * 0 = 0
+	Médio	: 5 * 7 = 35
+	Complexo: 7 * 6 = 42
+	Total	: 77
+
+Consulta
+	Simples : 3 * 0 = 0
+	Médio	: 4 * 6 = 24
+	Complexo: 6 * 7 = 42
+	Total	: 66
+
+Arquivo
+	Simples : 7 * 0 = 0
+	Médio	: 10* 12 = 120
+	Complexo: 15* 0 = 0
+	Total	: 120
+
+INterface
+	Simples : 5 * 0 = 0
+	Médio	: 7 * 13 = 91
+	Complexo: 10* 0 = 0
+	Total	: 91
+
+Total: 416
+
+
+================================
+
+
+416 * 1,35 = 561.60 = 562
+
+================================
+
+
+Calculo de Estimativa
+
+Meses (562 * 15)/3300 = 2 meses 55%
+Dias 22 * 0,55 = 12 dias e 10%
+Horas 6 * 0,10 = 0 horas e 60%
+Minutos 36minutos
+Segundos 0 segundos
+
+
+Horas Mes = 2 * 132 = 264
+Horas Dias = 12 * 6 = 72
+Minutos = 36/60 =  0.6
+
+Total R$ 11.781,00
