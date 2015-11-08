@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MetricaEngenhariaSoftware.Core;
 using MetricaEngenhariaSoftware.Core.CalcularMetricas;
 using MetricaEngenhariaSoftware.Entity.Entidade;
 using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
@@ -19,9 +20,9 @@ namespace MetricaEngenhariaSoftware.Test
         public MetricasSaida MetricasSaida => new MetricasSaida();
         public MetricasBase MetricasBase => new MetricasBase();
 
-        private TabelaDominioContainer TabelaDefault()
+        private MetricasIn TabelaDefault()
         {
-            var TabelaDominioContainer = new TabelaDominioContainer
+            var TabelaDominioContainer = new MetricasIn
             {
                 TabelaDominio = new List<TabelaDominio>
                 {
@@ -111,11 +112,11 @@ namespace MetricaEngenhariaSoftware.Test
                 TabelaInterface = calcularInterface
             };
 
-            var totalFPB = TabelasBrutas.FPB;
-            ValidarFPB(totalFPB);
+            var calcularFPB = new Gerenciar().CalcularFPB(TabelasBrutas);
+            ValidarFPB(calcularFPB);
 
 
-            var valorBase = Math.Round(MetricasBase.CalcularBase(totalFPB));
+            var valorBase = Math.Round(MetricasBase.CalcularBase(calcularFPB));
  
         }
 

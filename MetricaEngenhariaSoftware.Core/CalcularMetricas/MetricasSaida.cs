@@ -9,7 +9,7 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {
     public class MetricasSaida
     {
-        public List<TabelaSaida> CalcularSaida(TabelaDominioContainer tabelaDominioContainer)
+        public List<TabelaSaida> CalcularSaida(MetricasIn tabelaDominioContainer)
         {
             Debug.WriteLine("######## SAIDA ########");
 

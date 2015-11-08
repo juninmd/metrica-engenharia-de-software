@@ -9,7 +9,7 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {
     public class MetricasEntrada
     {
-        public List<TabelaEntrada> CalcularEntrada(TabelaDominioContainer tabelaDominioContainer)
+        public List<TabelaEntrada> CalcularEntrada(MetricasIn tabelaDominioContainer)
         {
             Debug.WriteLine("######## ENTRADA ########");
             var contador = new Contador();

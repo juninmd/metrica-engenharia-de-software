@@ -9,7 +9,7 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {
     public class MetricasArquivo
     {
-        public List<TabelaArquivo> CalcularArquivo(TabelaDominioContainer tabelaDominioContainer)
+        public List<TabelaArquivo> CalcularArquivo(MetricasIn tabelaDominioContainer)
         {
             Debug.WriteLine("######## ARQUIVO ########");
 

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
+using Contador = MetricaEngenhariaSoftware.Core.CalcularMetricas.Contador;
 
 namespace MetricaEngenhariaSoftware.Core.Utilidades
 {

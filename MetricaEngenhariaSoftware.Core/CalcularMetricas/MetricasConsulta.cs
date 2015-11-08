@@ -9,7 +9,7 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {
     public class MetricasConsulta
     {
-        public List<TabelaConsulta> CalcularConsulta(TabelaDominioContainer tabelaDominioContainer)
+        public List<TabelaConsulta> CalcularConsulta(MetricasIn tabelaDominioContainer)
         {
             Debug.WriteLine("######## CONSULTA ########");
 

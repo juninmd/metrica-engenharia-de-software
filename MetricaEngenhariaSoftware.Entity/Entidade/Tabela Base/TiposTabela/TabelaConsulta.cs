@@ -1,12 +1,5 @@
-﻿using System.Collections.Generic;
-
-namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.TiposTabela
+﻿namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.TiposTabela
 {
-    public class ListaTabelaConsulta
-    {
-        public List<TabelaConsulta> TabelaConsulta { get; set; }
-    }
-
     public class TabelaConsulta
     {
         public int NumeroOcorrencia { get; set; }

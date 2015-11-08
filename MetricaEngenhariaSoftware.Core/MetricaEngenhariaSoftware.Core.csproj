@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalcularMetricas\Contador.cs" />
     <Compile Include="CalcularMetricas\MetricasBase.cs" />
     <Compile Include="Gerenciar.cs" />
     <Compile Include="Utilidades\Debugar.cs" />
