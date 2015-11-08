@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MetricaEngenhariaSoftware.DataBase\MetricaEngenhariaSoftware.DataBase.csproj">
+      <Project>{7853A002-5815-4701-9794-3E656D17F124}</Project>
+      <Name>MetricaEngenhariaSoftware.DataBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MetricaEngenhariaSoftware.Entity\MetricaEngenhariaSoftware.Entity.csproj">
       <Project>{8D5C5639-4E40-4B87-B00D-C6BEAB0E2338}</Project>
       <Name>MetricaEngenhariaSoftware.Entity</Name>

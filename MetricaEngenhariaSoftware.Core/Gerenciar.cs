@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MetricaEngenhariaSoftware.Core.CalcularMetricas;
+using MetricaEngenhariaSoftware.DataBase.Repository;
 using MetricaEngenhariaSoftware.Entity.Entidade;
+using MetricaEngenhariaSoftware.Entity.Entidade.MES;
 using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
 
 namespace MetricaEngenhariaSoftware.Core
@@ -13,41 +16,25 @@ namespace MetricaEngenhariaSoftware.Core
             var metricasOut = new MetricasOut
             {
                 TabelasBrutas = tabelasBrutas,
-                FPB = CalcularFPB(tabelasBrutas)
+                FPB = CalcularFPB(tabelasBrutas),
+                FA = CalcularFA(metricasIn.IntIdFa),
+                LinguagemProgramacao = GetLinguagem(metricasIn.IntIdLinguagemProgramacao),
+                TipoSistema = GetSistema(metricasIn.IntIdTipoSistema),
             };
 
-/*
-            CalcularCusto(tabelaDominioContainer);
+            metricasOut.CalculoBaseFA_FPB = CalcularBaseFAcomFPB(metricasOut.FA, metricasOut.FPB);
 
-            tabelaDominioContainer.TempoTotalGeral = CalcularTempo(tabelaDominioContainer.Meses);
-            tabelaDominioContainer.TempoTotal = double.Parse((tabelaDominioContainer.Meses).ToString().Substring(0, tabelaDominioContainer.Meses.ToString().IndexOf(",") + 3));
-            tabelaDominioContainer.CalculoFinal = tabelaDominioContainer.TempoTotal * tabelaDominioContainer.PrecoDaLinguagem * 20.0;
-            return tabelaDominioContainer;*/
+            metricasOut.PrecoDaLinguagem = CalcularPrecoLinguagem(metricasOut.CalculoBaseFA_FPB, metricasOut.LinguagemProgramacao);
+
+            metricasOut.PrecoSistema = CalcularTipoSistema(metricasOut.PrecoDaLinguagem, metricasOut.TipoSistema);
+
+            metricasOut.TempoTotalGeralEmExtenso = CalcularTempo(metricasOut.PrecoSistema);
 
             return metricasOut;
         }
 
 
-        private string CalcularTempo(double containerMeses)
-        {
-            var mesesTotal = (containerMeses).ToString().Substring(0, containerMeses.ToString().IndexOf(",") + 3);
-            var meses = mesesTotal.Split(',')[0];
-            var porcMeses = mesesTotal.Split(',')[1];
-
-            var diasTotal = 22 * double.Parse("0," + porcMeses);
-            var dias = diasTotal.ToString().Split(',')[0];
-
-            var horasTotal = 6 * double.Parse("0," + diasTotal.ToString().Split(',')[1]);
-            var horas = horasTotal.ToString().Split(',')[0];
-
-            var minutosTotal = 60 * double.Parse("0," + horasTotal.ToString().Split(',')[1]);
-            var minutos = minutosTotal.ToString().Split(',')[0];
-
-            var segundosTotal = 60 * double.Parse("0," + minutosTotal.ToString().Split(',')[1]);
-            var segundos = segundosTotal.ToString().Split(',')[0];
-
-            return $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
-        }
+     
 
         private TabelasBrutas CalcularTabelasBrutas(MetricasIn tabelaDominioContainer)
         {
@@ -72,49 +59,51 @@ namespace MetricaEngenhariaSoftware.Core
                 tabelasBrutas.TabelaInterface.Select(x => x.Resultado).Sum());
         }
 
-
-        private void CalcularTipoLinguagem()
+        private double CalcularFA(int intIdFa)
         {
-            
-        }
-        private void CalcularCusto(MetricasIn tabelaDominioContainer)
-        {
-            /*  /* Calcula por tipo Linguagem  1 -java 2 -vb 3 -gc#1#
-              switch (tabelaDominioContainer.LinguagemDoSistema)
-              {
-                  case 1:
-                      tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.Java;
-                      tabelaDominioContainer.NomeLinguagemDoSistema = "JAVA";
-                      break;
-                  case 2:
-                      tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.VB;
-                      tabelaDominioContainer.NomeLinguagemDoSistema = "VISUAL BASIC";
-                      break;
-                  case 3:
-                      tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.GC;
-                      tabelaDominioContainer.NomeLinguagemDoSistema = "GERADOR DE CÓDIGO";
-                      break;
-              }
-              /* Calcula por tipo de sistema 1web 2comercial#1#
-              switch (tabelaDominioContainer.TipoDoSistema)
-              {
-                  case 1:
-                      tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Web;
-                      tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA WEB";
-
-                      break;
-                  case 2:
-                      tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Comercial;
-                      tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA COMERCIAL";
-                      break;
-                  case 3:
-                      tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.ComercioEletronico;
-                      tabelaDominioContainer.NomeTipoDoSistema = "E-comerce";
-                      break;
-              }
-  */
+            return (double)new GenericRepository<MES_FA>().GetById(intIdFa).DecValorFa;
         }
 
+        /// <summary>
+        /// FA * FPB
+        /// </summary>
+        /// <param name="Fa"></param>
+        /// <param name="FPB"></param>
+        /// <returns></returns>
+        private double CalcularBaseFAcomFPB(double Fa, double FPB)
+        {
+            return Math.Round(Fa * FPB);
+        }
 
+        private MES_LINGUAGEM_PROGRAMACAO GetLinguagem(int intIdLinguagem) => new GenericRepository<MES_LINGUAGEM_PROGRAMACAO>().GetById(intIdLinguagem);
+        private MES_TIPO_SISTEMA GetSistema(int intIdSistema) => new GenericRepository<MES_TIPO_SISTEMA>().GetById(intIdSistema);
+
+        private double CalcularPrecoLinguagem(double calculoBaseFA_FPB, MES_LINGUAGEM_PROGRAMACAO mesLinguagemProgramacao) => calculoBaseFA_FPB * (double)mesLinguagemProgramacao.DecValorLinguagemProgramacao;
+
+        private double CalcularTipoSistema(double precoLinguagem, MES_TIPO_SISTEMA mesTipoSistema)
+        {
+            return precoLinguagem / (double)mesTipoSistema.DecValorTipoSistema;
+        }
+
+        private string CalcularTempo(double containerMeses)
+        {
+            var mesesTotal = (containerMeses).ToString().Substring(0, containerMeses.ToString().IndexOf(",") + 3);
+            var meses = mesesTotal.Split(',')[0];
+            var porcMeses = mesesTotal.Split(',')[1];
+
+            var diasTotal = 22 * double.Parse("0," + porcMeses);
+            var dias = diasTotal.ToString().Split(',')[0];
+
+            var horasTotal = 6 * double.Parse("0," + diasTotal.ToString().Split(',')[1]);
+            var horas = horasTotal.ToString().Split(',')[0];
+
+            var minutosTotal = 60 * double.Parse("0," + horasTotal.ToString().Split(',')[1]);
+            var minutos = minutosTotal.ToString().Split(',')[0];
+
+            var segundosTotal = 60 * double.Parse("0," + minutosTotal.ToString().Split(',')[1]);
+            var segundos = segundosTotal.ToString().Split(',')[0];
+
+            return $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
+        }
     }
 }

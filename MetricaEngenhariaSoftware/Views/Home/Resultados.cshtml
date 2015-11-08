@@ -1,4 +1,4 @@
-﻿@model MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.TabelaDominioContainer
+﻿@model MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base.MetricasOut
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -55,24 +55,21 @@ else
     <hr />
  
     <div>
-        <p>Valor FPB : @Model.TabelasBrutas.FPB </p>
+        <p>Valor FPB : @Model.FPB</p>
     </div>
 
     <div>
-        <p>Preco da Linguagem : @Model.PrecoDaLinguagem - @Model.NomeLinguagemDoSistema - @Model.NomeTipoDoSistema </p>
+        <p>Preco da Linguagem : @Model.PrecoDaLinguagem - @Model.LinguagemProgramacao.StrNomeLinguagemProgramacao </p>
+    </div>
+    <div>
+        <p>Preco do Sistema : @Model.PrecoSistema - @Model.TipoSistema.StrNomeTipoSistema</p>
+    </div>
+    <div>
+        <p>Tempo Total em Extenso @Model.TempoTotalGeralEmExtenso </p>
     </div>
 
     <div>
-        <p>Tempo Total Geral : @Model.TempoTotalGeral </p>
-    </div>
-
-    <div>
-        <p>Tempo Total: @Model.TempoTotal</p>
-    </div>
-
-
-    <div>
-        <p>Este sistema vai lhe Custar: @(Model.CalculoFinal.ToString("C"))</p>
+        <p>Este sistema vai lhe Custar: @(Model.PrecoSistema.ToString("C"))</p>
     </div>
 
 

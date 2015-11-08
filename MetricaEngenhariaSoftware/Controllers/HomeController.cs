@@ -52,7 +52,7 @@ namespace MetricaEngenhariaSoftware.Controllers
             if (HttpContext.Session["TabelaDominioContainer"] == null)
                 return View();
 
-            var tabelaDominio = (MetricasIn)HttpContext.Session["TabelaDominioContainer"];
+            var tabelaDominio = (MetricasOut)HttpContext.Session["TabelaDominioContainer"];
             return View(tabelaDominio);
         }
 

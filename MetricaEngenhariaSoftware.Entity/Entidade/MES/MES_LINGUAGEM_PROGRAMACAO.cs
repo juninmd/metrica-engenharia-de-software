@@ -9,6 +9,6 @@ namespace MetricaEngenhariaSoftware.Entity.Entidade.MES
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int IntIdLinguagemProgramacao { get; set; }
         public string StrNomeLinguagemProgramacao { get; set; }
-        public string DecValorLinguagemProgramacao { get; set; }
+        public decimal DecValorLinguagemProgramacao { get; set; }
     }
 }
