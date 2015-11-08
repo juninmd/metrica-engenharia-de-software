@@ -20,6 +20,7 @@ namespace MetricaEngenhariaSoftware.Core
                 FA = CalcularFA(metricasIn.IntIdFa),
                 LinguagemProgramacao = GetLinguagem(metricasIn.IntIdLinguagemProgramacao),
                 TipoSistema = GetSistema(metricasIn.IntIdTipoSistema),
+                MesIso = GetISO(metricasIn.IntIdIso)
             };
 
             metricasOut.CalculoBaseFA_FPB = CalcularBaseFAcomFPB(metricasOut.FA, metricasOut.FPB);
@@ -28,13 +29,18 @@ namespace MetricaEngenhariaSoftware.Core
 
             metricasOut.PrecoSistema = CalcularTipoSistema(metricasOut.PrecoDaLinguagem, metricasOut.TipoSistema);
 
-            metricasOut.TempoTotalGeralEmExtenso = CalcularTempo(metricasOut.PrecoSistema);
+            metricasOut.TempoTotalSistemaEmExtenso = CalcularTempo(metricasOut.PrecoSistema);
+
+            metricasOut.CalculoISO = CalcularISO(metricasOut.PrecoSistema, metricasOut.MesIso);
+
+            metricasOut.PrecoSistema = CalcularPrecoSistema(metricasOut.CalculoISO);
+
 
             return metricasOut;
         }
 
 
-     
+
 
         private TabelasBrutas CalcularTabelasBrutas(MetricasIn tabelaDominioContainer)
         {
@@ -77,12 +83,33 @@ namespace MetricaEngenhariaSoftware.Core
 
         private MES_LINGUAGEM_PROGRAMACAO GetLinguagem(int intIdLinguagem) => new GenericRepository<MES_LINGUAGEM_PROGRAMACAO>().GetById(intIdLinguagem);
         private MES_TIPO_SISTEMA GetSistema(int intIdSistema) => new GenericRepository<MES_TIPO_SISTEMA>().GetById(intIdSistema);
+        private MES_ISO GetISO(int intIdIso) => new GenericRepository<MES_ISO>().GetById(intIdIso);
 
+        /// <summary>
+        /// Calculo Base * Preço da Linguagem
+        /// </summary>
+        /// <param name="calculoBaseFA_FPB"></param>
+        /// <param name="mesLinguagemProgramacao"></param>
+        /// <returns></returns>
         private double CalcularPrecoLinguagem(double calculoBaseFA_FPB, MES_LINGUAGEM_PROGRAMACAO mesLinguagemProgramacao) => calculoBaseFA_FPB * (double)mesLinguagemProgramacao.DecValorLinguagemProgramacao;
 
+        /// <summary>
+        /// <para>Retorna o tempo necessário para desenvolvedor por aquele tipo de sistema</para>
+        /// <para>Preço da Linguagem / Tipo do Sistema</para>
+        /// </summary>
+        /// <param name="precoLinguagem"></param>
+        /// <param name="mesTipoSistema"></param>
+        /// <returns></returns>
         private double CalcularTipoSistema(double precoLinguagem, MES_TIPO_SISTEMA mesTipoSistema)
         {
             return precoLinguagem / (double)mesTipoSistema.DecValorTipoSistema;
+        }
+
+        private double CalcularISO(double precoTipoSistema, MES_ISO mesIso)
+        {
+            var mesesTotal = (precoTipoSistema).ToString().Substring(0, precoTipoSistema.ToString().IndexOf(",") + 3);
+
+            return double.Parse(mesesTotal) * mesIso.IntValorIso;
         }
 
         private string CalcularTempo(double containerMeses)
@@ -104,6 +131,12 @@ namespace MetricaEngenhariaSoftware.Core
             var segundos = segundosTotal.ToString().Split(',')[0];
 
             return $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
+        }
+
+        private double CalcularPrecoSistema(double valorIso)
+        {
+
+            return valorIso * 90;
         }
     }
 }
