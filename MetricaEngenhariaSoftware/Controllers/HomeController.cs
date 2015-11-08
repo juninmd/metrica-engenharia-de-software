@@ -14,18 +14,25 @@ namespace MetricaEngenhariaSoftware.Controllers
         }
 
         [HttpPost]
-        public ActionResult InserirTabelas(FormCollection form)
+        public ActionResult InserirTabelas(FormCollection form, MetricasIn metricasIn)
         {
             var nomeSplit = form["NomeTabela"].Split(',');
             var atributosSplit = form["QuantidadeAtributos"].Split(',');
 
-            var tabelaDominio = nomeSplit.Select((t, i) => new TabelaDominio
+            metricasIn.TabelaDominio = nomeSplit.Select((t, i) => new TabelaDominio
             {
                 NomeTabela = t,
                 QuantidadeAtributos = int.Parse(atributosSplit[i]),
             }).ToList();
 
-            var TabelaDominioContainer = new Gerenciar().Inserir(tabelaDominio, int.Parse(form["LinguagemDoSistema"]), int.Parse(form["TipoDoSistema"]));
+            /* Adiciona Tabela Geral, calculando como base a quantidade de atributos GERAL*/
+            metricasIn.TabelaDominio.Add(new TabelaDominio
+            {
+                NomeTabela = "Geral",
+                QuantidadeAtributos = metricasIn.TabelaDominio.Select(x => x.QuantidadeAtributos).Sum()
+            });
+
+            var TabelaDominioContainer = new Gerenciar().Inserir(metricasIn);
 
             /* Armazena em Session */
             HttpContext.Session["TabelaDominioContainer"] = TabelaDominioContainer;
@@ -45,7 +52,7 @@ namespace MetricaEngenhariaSoftware.Controllers
             if (HttpContext.Session["TabelaDominioContainer"] == null)
                 return View();
 
-            var tabelaDominio = (TabelaDominioContainer)HttpContext.Session["TabelaDominioContainer"];
+            var tabelaDominio = (MetricasIn)HttpContext.Session["TabelaDominioContainer"];
             return View(tabelaDominio);
         }
 

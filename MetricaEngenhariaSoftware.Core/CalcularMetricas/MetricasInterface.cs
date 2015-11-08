@@ -9,7 +9,7 @@ namespace MetricaEngenhariaSoftware.Core.CalcularMetricas
 {
     public class MetricasInterface
     {
-        public List<TabelaInterface> CalcularInterface(TabelaDominioContainer tabelaDominioContainer)
+        public List<TabelaInterface> CalcularInterface(MetricasIn tabelaDominioContainer)
         {
             Debug.WriteLine("######## INTERFACE ########");
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using MetricaEngenhariaSoftware.Core.CalcularMetricas;
 using MetricaEngenhariaSoftware.Entity.Entidade;
 using MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base;
@@ -9,32 +7,26 @@ namespace MetricaEngenhariaSoftware.Core
 {
     public class Gerenciar
     {
-        public TabelaDominioContainer Inserir(List<TabelaDominio> TabelaDominio, int linguagem, int tipo)
+        public MetricasOut Inserir(MetricasIn metricasIn)
         {
-            var TabelaDominioContainer = new TabelaDominioContainer
+            var tabelasBrutas = CalcularTabelasBrutas(metricasIn);
+            var metricasOut = new MetricasOut
             {
-                TabelaDominio = TabelaDominio,
-                LinguagemDoSistema = linguagem,
-                TipoDoSistema = tipo
+                TabelasBrutas = tabelasBrutas,
+                FPB = CalcularFPB(tabelasBrutas)
             };
 
-            var geral = TabelaDominioContainer.TabelaDominio.Select(x => x.QuantidadeAtributos).Sum();
+/*
+            CalcularCusto(tabelaDominioContainer);
 
-            TabelaDominioContainer.TabelaDominio.Add(new TabelaDominio
-            {
-                NomeTabela = "Geral",
-                QuantidadeAtributos = geral
-            });
+            tabelaDominioContainer.TempoTotalGeral = CalcularTempo(tabelaDominioContainer.Meses);
+            tabelaDominioContainer.TempoTotal = double.Parse((tabelaDominioContainer.Meses).ToString().Substring(0, tabelaDominioContainer.Meses.ToString().IndexOf(",") + 3));
+            tabelaDominioContainer.CalculoFinal = tabelaDominioContainer.TempoTotal * tabelaDominioContainer.PrecoDaLinguagem * 20.0;
+            return tabelaDominioContainer;*/
 
-            CalcularTabelasBrutas(TabelaDominioContainer);
-
-            CalcularCusto(TabelaDominioContainer);
-
-            TabelaDominioContainer.TempoTotalGeral = CalcularTempo(TabelaDominioContainer.Meses); 
-            TabelaDominioContainer.TempoTotal = double.Parse((TabelaDominioContainer.Meses).ToString().Substring(0, TabelaDominioContainer.Meses.ToString().IndexOf(",") + 3));
-            TabelaDominioContainer.CalculoFinal = TabelaDominioContainer.TempoTotal *  TabelaDominioContainer.PrecoDaLinguagem * 20.0;
-            return TabelaDominioContainer;
+            return metricasOut;
         }
+
 
         private string CalcularTempo(double containerMeses)
         {
@@ -56,10 +48,11 @@ namespace MetricaEngenhariaSoftware.Core
 
             return $"Meses : {meses} | Dias: {dias} | Horas: {horas} | Minutos: {minutos} | Segundos: {segundos}";
         }
-        private void CalcularTabelasBrutas(TabelaDominioContainer tabelaDominioContainer)
+
+        private TabelasBrutas CalcularTabelasBrutas(MetricasIn tabelaDominioContainer)
         {
 
-            var TabelasBrutas = new TabelasBrutas
+            return new TabelasBrutas
             {
                 TabelaEntrada = new MetricasEntrada().CalcularEntrada(tabelaDominioContainer),
                 TabelaSaida = new MetricasSaida().CalcularSaida(tabelaDominioContainer),
@@ -68,45 +61,58 @@ namespace MetricaEngenhariaSoftware.Core
                 TabelaInterface = new MetricasInterface().CalcularInterface(tabelaDominioContainer)
             };
 
-            tabelaDominioContainer.TabelasBrutas = TabelasBrutas;
         }
 
-        private void CalcularCusto(TabelaDominioContainer tabelaDominioContainer)
+        public int CalcularFPB(TabelasBrutas tabelasBrutas)
         {
-          /*  /* Calcula por tipo Linguagem  1 -java 2 -vb 3 -gc#1#
-            switch (tabelaDominioContainer.LinguagemDoSistema)
-            {
-                case 1:
-                    tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.Java;
-                    tabelaDominioContainer.NomeLinguagemDoSistema = "JAVA";
-                    break;
-                case 2:
-                    tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.VB;
-                    tabelaDominioContainer.NomeLinguagemDoSistema = "VISUAL BASIC";
-                    break;
-                case 3:
-                    tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.GC;
-                    tabelaDominioContainer.NomeLinguagemDoSistema = "GERADOR DE CÓDIGO";
-                    break;
-            }
-            /* Calcula por tipo de sistema 1web 2comercial#1#
-            switch (tabelaDominioContainer.TipoDoSistema)
-            {
-                case 1:
-                    tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Web;
-                    tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA WEB";
+            return (tabelasBrutas.TabelaEntrada.Select(x => x.Resultado).Sum() +
+                tabelasBrutas.TabelaSaida.Select(x => x.Resultado).Sum() +
+                tabelasBrutas.TabelaConsulta.Select(x => x.Resultado).Sum() +
+                tabelasBrutas.TabelaArquivo.Select(x => x.Resultado).Sum() +
+                tabelasBrutas.TabelaInterface.Select(x => x.Resultado).Sum());
+        }
 
-                    break;
-                case 2:
-                    tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Comercial;
-                    tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA COMERCIAL";
-                    break;
-                case 3:
-                    tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.ComercioEletronico;
-                    tabelaDominioContainer.NomeTipoDoSistema = "E-comerce";
-                    break;
-            }
-*/
+
+        private void CalcularTipoLinguagem()
+        {
+            
+        }
+        private void CalcularCusto(MetricasIn tabelaDominioContainer)
+        {
+            /*  /* Calcula por tipo Linguagem  1 -java 2 -vb 3 -gc#1#
+              switch (tabelaDominioContainer.LinguagemDoSistema)
+              {
+                  case 1:
+                      tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.Java;
+                      tabelaDominioContainer.NomeLinguagemDoSistema = "JAVA";
+                      break;
+                  case 2:
+                      tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.VB;
+                      tabelaDominioContainer.NomeLinguagemDoSistema = "VISUAL BASIC";
+                      break;
+                  case 3:
+                      tabelaDominioContainer.PrecoDaLinguagem = tabelaDominioContainer.TabelasBrutas.CalculoBase * Linguagens.GC;
+                      tabelaDominioContainer.NomeLinguagemDoSistema = "GERADOR DE CÓDIGO";
+                      break;
+              }
+              /* Calcula por tipo de sistema 1web 2comercial#1#
+              switch (tabelaDominioContainer.TipoDoSistema)
+              {
+                  case 1:
+                      tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Web;
+                      tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA WEB";
+
+                      break;
+                  case 2:
+                      tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.Comercial;
+                      tabelaDominioContainer.NomeTipoDoSistema = "SISTEMA COMERCIAL";
+                      break;
+                  case 3:
+                      tabelaDominioContainer.Meses = tabelaDominioContainer.PrecoDaLinguagem / Sistema.ComercioEletronico;
+                      tabelaDominioContainer.NomeTipoDoSistema = "E-comerce";
+                      break;
+              }
+  */
         }
 
 
