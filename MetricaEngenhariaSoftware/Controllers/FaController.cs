@@ -30,7 +30,7 @@ namespace MetricaEngenhariaSoftware.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddOrUpdate(MES_FA MES_FA)
+        public ActionResult AddOrUpdate(MES_FA MES_FA, FormCollection form)
         {
             GenericRepository.AddOrUpdate(MES_FA);
 
