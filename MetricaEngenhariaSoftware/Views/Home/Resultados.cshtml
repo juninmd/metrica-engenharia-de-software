@@ -59,17 +59,17 @@ else
     </div>
 
     <div>
-        <p>Preco da Linguagem : @Model.PrecoDaLinguagem - @Model.LinguagemProgramacao.StrNomeLinguagemProgramacao </p>
+        <p>Preco da Linguagem : @Model.LinguagemProgramacao.DecValorLinguagemProgramacao - @Model.LinguagemProgramacao.StrNomeLinguagemProgramacao </p>
     </div>
     <div>
-        <p>Preco do Sistema : @Model.PrecoSistema - @Model.TipoSistema.StrNomeTipoSistema</p>
+        <p>Preco do Sistema : @Model.TipoSistema.DecValorTipoSistema - @Model.TipoSistema.StrNomeTipoSistema</p>
     </div>
     <div>
         <p>Tempo Total em Extenso @Model.TempoTotalSistemaEmExtenso </p>
     </div>
 
     <div>
-        <p>Este sistema vai lhe Custar: @(Model.PrecoSistema.ToString("C"))</p>
+        <p>Este sistema vai lhe Custar: @(Model.PrecoDoSistema.ToString("C"))</p>
     </div>
 
 

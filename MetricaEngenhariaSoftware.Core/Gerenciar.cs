@@ -27,13 +27,13 @@ namespace MetricaEngenhariaSoftware.Core
 
             metricasOut.PrecoDaLinguagem = CalcularPrecoLinguagem(metricasOut.CalculoBaseFA_FPB, metricasOut.LinguagemProgramacao);
 
-            metricasOut.PrecoSistema = CalcularTipoSistema(metricasOut.PrecoDaLinguagem, metricasOut.TipoSistema);
+            metricasOut.ValorEmTempoPorDivisaodoSistema = CalcularTipoSistema(metricasOut.PrecoDaLinguagem, metricasOut.TipoSistema);
 
-            metricasOut.TempoTotalSistemaEmExtenso = CalcularTempo(metricasOut.PrecoSistema);
+            metricasOut.TempoTotalSistemaEmExtenso = CalcularTempo(metricasOut.ValorEmTempoPorDivisaodoSistema);
 
-            metricasOut.CalculoISO = CalcularISO(metricasOut.PrecoSistema, metricasOut.MesIso);
+            metricasOut.CalculoISO = CalcularISO(metricasOut.ValorEmTempoPorDivisaodoSistema, metricasOut.MesIso);
 
-            metricasOut.PrecoSistema = CalcularPrecoSistema(metricasOut.CalculoISO);
+            metricasOut.PrecoDoSistema = CalcularPrecoSistema(metricasOut.CalculoISO);
 
 
             return metricasOut;

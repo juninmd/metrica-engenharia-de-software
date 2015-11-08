@@ -47,7 +47,7 @@ namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base
         /// <summary>
         /// Preço do Sistema
         /// </summary>
-        public double PrecoSistema { get; set; }
+        public double ValorEmTempoPorDivisaodoSistema { get; set; }
 
         /// <summary>
         /// Calculo da ISO
