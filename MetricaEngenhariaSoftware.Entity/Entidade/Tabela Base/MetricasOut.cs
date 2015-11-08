@@ -35,6 +35,11 @@ namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base
         public MES_TIPO_SISTEMA TipoSistema { get; set; }
 
         /// <summary>
+        /// Atribui a Entidade de ISO
+        /// </summary>
+        public MES_ISO MesIso { get; set; }
+
+        /// <summary>
         /// Preço da Linguagem
         /// </summary>
         public double PrecoDaLinguagem { get; set; }
@@ -45,11 +50,21 @@ namespace MetricaEngenhariaSoftware.Entity.Entidade.Tabela_Base
         public double PrecoSistema { get; set; }
 
         /// <summary>
+        /// Calculo da ISO
+        /// </summary>
+        public double CalculoISO { get; set; }
+
+        /// <summary>
         /// Tempo estipulado em extenso
         /// </summary>
-        public string TempoTotalGeralEmExtenso { get; set; }
+        public string TempoTotalSistemaEmExtenso { get; set; }
 
- 
+        /// <summary>
+        /// Tempo estipulado em extenso
+        /// </summary>
+        public double PrecoDoSistema{ get; set; }
+
+
         /// <summary>
         /// Tabelas com seus pesos e resultados
         /// </summary>
