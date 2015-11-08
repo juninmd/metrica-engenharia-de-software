@@ -107,7 +107,7 @@ namespace MetricaEngenhariaSoftware.Core
 
         private double CalcularISO(double precoTipoSistema, MES_ISO mesIso)
         {
-            var mesesTotal = (precoTipoSistema).ToString().Substring(0, precoTipoSistema.ToString().IndexOf(",") + 3);
+            var mesesTotal = (precoTipoSistema).ToString().Substring(0, 1);
 
             return double.Parse(mesesTotal) * mesIso.IntValorIso;
         }
