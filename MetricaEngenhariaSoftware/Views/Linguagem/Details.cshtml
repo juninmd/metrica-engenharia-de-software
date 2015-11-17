@@ -16,17 +16,17 @@
         @Html.HiddenFor(model => model.IntIdLinguagemProgramacao)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StrNomeLinguagemProgramacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Nome Linguagem</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StrNomeLinguagemProgramacao, new { htmlAttributes = new { @class = "form-control" } })
+                <input class="form-control" name="StrNomeLinguagemProgramacao" value="@Model.StrNomeLinguagemProgramacao" />
                 @Html.ValidationMessageFor(model => model.StrNomeLinguagemProgramacao, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DecValorLinguagemProgramacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Valor da Linguagem de Programação</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DecValorLinguagemProgramacao, new { htmlAttributes = new { @class = "form-control" } })
+                <input class="form-control" name="DecValorLinguagemProgramacao" value="@Model.DecValorLinguagemProgramacao" />
                 @Html.ValidationMessageFor(model => model.DecValorLinguagemProgramacao, "", new { @class = "text-danger" })
             </div>
         </div>

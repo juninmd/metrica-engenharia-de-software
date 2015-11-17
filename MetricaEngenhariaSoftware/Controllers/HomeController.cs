@@ -37,7 +37,7 @@ namespace MetricaEngenhariaSoftware.Controllers
             /* Armazena em Session */
             HttpContext.Session["TabelaDominioContainer"] = TabelaDominioContainer;
 
-            return View();
+            return RedirectToAction("Resultados");
         }
 
         [HttpGet]
