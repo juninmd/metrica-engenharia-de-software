@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using MetricaEngenhariaSoftware.DataBase.Interfaces;
-using MetricaEngenhariaSoftware.Entity.Entidade.MES;
 
 namespace MetricaEngenhariaSoftware.DataBase.Repository
 {
